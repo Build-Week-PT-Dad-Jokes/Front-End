@@ -15,7 +15,9 @@ function App() {
           <span className="right-button">{'>>'}</span>
         </header>
         <section className="joke">
-          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Explicabo ipsum repellat minus repellendus id illum itaque repudiandae labore rem numquam? Nihil perferendis dolor sed tenetur veniam provident perspiciatis pariatur minima.
+          <p>
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Explicabo ipsum repellat minus repellendus id illum itaque repudiandae labore rem numquam? Nihil perferendis dolor sed tenetur veniam provident perspiciatis pariatur minima.
+          </p>
         </section>
       </div>
     </div>
