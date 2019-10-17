@@ -23,21 +23,21 @@ function LoginForm({status, values, errors, touched, isSubmitting }) {
       <Form className="main-form">
         <h1>Login</h1>
         <div className="errors"> 
-          {checkForError('email') && <p className="error-text">{errors.email}</p>}
-          {checkForError('password') && <p className="error-text">{errors.password}</p>}
         </div>
+        <div>Email* {checkForError('email') && <span className="error-text">{errors.email}</span>}</div>
         <div>
           <Field 
             type="email" 
             name="email" 
-            placeholder="Email" 
+            // placeholder="Email" 
           />
         </div>
+        <div>Password*  {checkForError('password') && <span className="error-text">{errors.password}</span>}</div>
         <div>
           <Field 
             type="password" 
             name="password" 
-            placeholder="Password" 
+            // placeholder="Password" 
           />
         </div>
         <div>

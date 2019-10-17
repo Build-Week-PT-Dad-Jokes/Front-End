@@ -5,7 +5,7 @@ import axios from "axios"
 
 function CreateForm({status, values, errors, touched, isSubmitting }) {
 
-    const checkForError = (type) => {
+  const checkForError = (type) => {
         return touched[type] && errors[type]
       }
 
@@ -22,38 +22,36 @@ function CreateForm({status, values, errors, touched, isSubmitting }) {
     <div className="form-container">
       <Form className="main-form">
         <h1>Create Account</h1>
-        <div className="errors"> 
-          {checkForError('name') && <p className="error-text">{errors.name}</p>}
-          {checkForError('email') && <p className="error-text">{errors.email}</p>}
-          {checkForError('password') && <p className="error-text">{errors.password}</p>}
-          {checkForError('passwordConf') && <p className="error-text">{errors.passwordConf}</p>}
-        </div>
+        <div>Name* {checkForError('name') && <span className="error-text">{errors.name}</span>}</div>
         <div>
           <Field 
             type="name" 
             name="name" 
-            placeholder="Name" 
+            // placeholder="Name" 
           />
         </div>
+        <div>Email* {checkForError('email') && <span className="error-text">{errors.email}</span>}</div>
         <div>
           <Field 
             type="email" 
             name="email" 
-            placeholder="Email" 
+            // placeholder="Email" 
           />
         </div>
+        <div>Password* {checkForError('password') && <span className="error-text">{errors.password}</span>}</div>
         <div>
           <Field 
             type="password" 
             name="password" 
-            placeholder="Password" 
+            // placeholder="Password" 
           />
         </div>
+        <div>Confirm Password* {checkForError('passwordConf') && <span className="error-text">{errors.passwordConf}</span>}</div>
         <div>
           <Field 
             type="password" 
             name="passwordConf" 
-            placeholder="Confirm Password" 
+            // placeholder="Confirm Password" 
           />
         </div>
         <div>
@@ -91,14 +89,14 @@ const FormikAccountForm = withFormik({
     name: Yup.string()
       .required("Name is required"),
     email: Yup.string()
-      .email("Email not valid")
+      .email("Invalid Email")
       .required("Email is required"),
     password: Yup.string()
       .min(6, "Password must be 6 characters or longer")
       .required("Password is required"),
     passwordConf: Yup.string()
      .required("Please confirm password")
-     .oneOf([Yup.ref('password'), null], 'Passwords must match')
+     .oneOf([Yup.ref('password'), null], 'Passwords do not match')
   }),
 
 handleSubmit(values, { resetForm, setErrors, setSubmitting, setStatus }) {
