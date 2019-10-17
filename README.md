@@ -24,11 +24,12 @@ Meme/image support
 - What do the top 3 similar apps do for their users?
 Popular jokes listing
 Share
-Frameworks - Libraries
+
+Frameworks/ Libraries
 
 - What 3rd party frameworks/libraries are you considering using?
 Axios
-Formkik
+Formik
 Material-UI
 YUP
 REACT Strap
@@ -45,12 +46,13 @@ N/A
 
 - Have you considered using Apple Frameworks? (MapKit, Healthkit, ARKit?)
 N/A
+
 Target Audience
 
 - Who is your target audience? Be specific.
 Young mobile adult with social media
 
-	- What feedback have you gotten from potential users?
+- What feedback have you gotten from potential users?
 - Have you validated the problem and your solution with your target audience? How?
 
 Research
