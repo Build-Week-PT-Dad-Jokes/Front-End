@@ -32,7 +32,7 @@ function CreateForm({ errors, touched, isSubmitting }) {
 
   return (
     <div className="signup-container">
-      <h1>Sign up</h1>
+      {/* <h1>Sign up</h1> */}
       <Form className="main-form">
         <div className="above-boxes">
           <span>Email*</span> 

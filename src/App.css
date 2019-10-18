@@ -3,8 +3,11 @@
 }
 html {
   font-size: 62.5%;
+  height: 100%;
 }
 body {
+  min-height: 100%;
+  overflow: auto;
   font-size: 1.6rem;
 }
 .App {
@@ -67,16 +70,32 @@ button {
 .carousel .carousel-header .right-button {
   padding-left: 2rem;
 }
+.signup-container {
+  background: radial-gradient(circle at 0 0, rgba(114, 22, 22, 0), #721616), url(./img/bg-create.png) no-repeat;
+  background-size: cover;
+  background-position: center center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+.login-container {
+  background: radial-gradient(circle at 0 0, rgba(114, 22, 22, 0), #721616), url(./img/bg-login.png) no-repeat;
+  background-size: cover;
+  background-position: center center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
 .main-form {
   color: #cbcbcb;
   display: flex;
   flex-direction: column;
   background-color: rgba(26, 23, 26, 0.5);
   width: 50%;
-  margin: 0 auto;
   padding: 4% 6%;
   text-align: left;
-  margin-top: 10%;
   border-radius: 4px;
 }
 @media (max-width:885px) {
@@ -139,13 +158,4 @@ button {
 }
 .main-form .bottom-form .submit-button:hover {
   background-color: #d33030;
-}
-.signup-container {
-  background: url(../img/bg-create.png) no-repeat top left;
-  height: 75vw;
-  background: radial-gradient(circle at 0 0, rgba(114, 22, 22, 0), #721616);
-}
-.login-container {
-  height: 75vw;
-  background-image: radial-gradient(circle at 0 0, rgba(114, 22, 22, 0), #721616);
 }

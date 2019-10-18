@@ -34,7 +34,7 @@ function LoginForm({ errors, touched, isSubmitting }) {
 
   return (
     <div className="login-container">
-      <h1>Login</h1>
+      {/* <h1>Login</h1> */}
       <Form className="main-form">
         
         <div className="errors"> 
