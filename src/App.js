@@ -31,9 +31,7 @@ function App() {
           <FormikLoginForm validateOnChange={false} validateOnBlur={false} />
         )}
       />
-      <Route exact path="/">
-        <LandingPage />
-      </Route>
+      <Route exact path="/" render={props => <LandingPage {...props} />} />
       <Footer />
     </div>
   );

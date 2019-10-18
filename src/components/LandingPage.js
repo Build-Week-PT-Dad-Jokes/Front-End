@@ -11,8 +11,9 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-const LandingPage = () => {
+const LandingPage = props => {
   const classes = useStyles();
+  const { history } = props;
 
   return (
     <div className="wrapper">
@@ -31,9 +32,14 @@ const LandingPage = () => {
               repudiandae labore rem numquam? Nihil perferendis dolor sed
               tenetur veniam provident perspiciatis pariatur minima.
             </p>
-            <Button className={classes.button}>Create an Account</Button>
+            <Button
+              className={classes.button}
+              onClick={() => history.push("/signup")}
+            >
+              Create an Account
+            </Button>
             <span>
-              Already have an account? <Link>Login</Link>
+              Already have an account? <Link to="/login">Login</Link>
             </span>
             <Button className={classes.button}>Continue As Guest</Button>
           </section>
