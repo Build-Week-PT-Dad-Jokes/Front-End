@@ -28,7 +28,9 @@ function App() {
         }
       />
       <Footer />
-      <LandingPage />
+      <Route exact path="/">
+        <LandingPage />
+      </Route>
     </div>
   );
 }
