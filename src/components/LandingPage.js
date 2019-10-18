@@ -24,8 +24,8 @@ const LandingPage = () => {
             <h2>Sample Dad Joke Carousel</h2>
             <span className="right-button">{">>"}</span>
           </header>
-          <section className="joke">
-            <p>
+          <section className="container">
+            <p className="joke">
               Lorem ipsum dolor sit amet consectetur, adipisicing elit.
               Explicabo ipsum repellat minus repellendus id illum itaque
               repudiandae labore rem numquam? Nihil perferendis dolor sed

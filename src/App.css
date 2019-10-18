@@ -57,3 +57,7 @@ span {
 .carousel .carousel-header .right-button {
   padding-left: 2rem;
 }
+.carousel .container {
+  display: flex;
+  flex-direction: column;
+}
