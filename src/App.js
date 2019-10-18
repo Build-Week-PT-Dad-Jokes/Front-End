@@ -12,7 +12,7 @@ import LandingPage from './components/LandingPage';
 function App() {
   return (
     <div className="App">
-      <Header />
+      {/* <Header /> */}
       <Route 
         exact 
         path="/signup" 
@@ -27,8 +27,8 @@ function App() {
           <FormikLoginForm validateOnChange={false} validateOnBlur={false}/>
         }
       />
-      <Footer />
-      <LandingPage />
+      {/* <Footer /> */}
+      {/* <LandingPage /> */}
     </div>
   );
 }

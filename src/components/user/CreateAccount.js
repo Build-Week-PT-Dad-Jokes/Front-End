@@ -20,54 +20,77 @@ function CreateForm({history, status, values, errors, touched, isSubmitting }) {
   }, [status]);
 
   return (
-    <div className="form-container">
+    <div className="signup-container">
+      <h1>Sign up</h1>
       <Form className="main-form">
-        <h1>Create Account</h1>
-        <div>Name* {checkForError('name') && <span className="error-text">{errors.name}</span>}</div>
-        <div>
-          <Field 
-            type="name" 
-            name="name" 
-            // placeholder="Name" 
-          />
+        <div className="above-boxes">
+          <span>Email*</span> 
+          {checkForError('email') && <span className="error-text">{errors.email}</span>}
         </div>
-        <div>Email* {checkForError('email') && <span className="error-text">{errors.email}</span>}</div>
         <div>
           <Field 
+            className="text-box"
             type="email" 
             name="email" 
             // placeholder="Email" 
           />
         </div>
-        <div>Password* {checkForError('password') && <span className="error-text">{errors.password}</span>}</div>
+        <div className="above-boxes">
+          <span>Username* </span>
+          {checkForError('name') && <span className="error-text">{errors.name}</span>}
+        </div>
+        
         <div>
           <Field 
+            className="text-box"
+            type="name" 
+            name="name" 
+            // placeholder="Name" 
+          />
+        </div>
+        <div className="above-boxes">
+          <span>Password* </span>
+          {checkForError('password') && <span className="error-text">{errors.password}</span>}
+        </div>
+        
+        <div>
+          <Field 
+            className="text-box"
             type="password" 
             name="password" 
             // placeholder="Password" 
           />
         </div>
-        <div>Confirm Password* {checkForError('passwordConf') && <span className="error-text">{errors.passwordConf}</span>}</div>
+        <div className="above-boxes">
+          <span>Confirm Password* </span>
+          {checkForError('passwordConf') && <span className="error-text">{errors.passwordConf}</span>}
+        </div>
+        
         <div>
           <Field 
+            className="text-box"
             type="password" 
             name="passwordConf" 
             // placeholder="Confirm Password" 
           />
         </div>
-        <div>
-            Already have an account?  
-            <Link to="/login">
-              <p>Login</p>
-            </Link>
+        <div className="bottom-form">
+          <div>
+              Already have an account?  
+              <Link to="/login">
+                <p>Login</p>
+              </Link>
+          </div>
+
+          <button 
+            className="submit-button" 
+            type="submit" 
+            disabled={isSubmitting}>
+              Create Account
+          </button>
         </div>
 
-        <button 
-          className="submit-button" 
-          type="submit" 
-          disabled={isSubmitting}>
-            Sign Up
-        </button>
+        
       </Form>
     </div>
     

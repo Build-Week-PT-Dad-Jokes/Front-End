@@ -1,5 +1,13 @@
 .App {
+  font-family: 'Roboto', sans-serif;
   text-align: center;
+  font-size: 4rem;
+}
+html {
+  font-size: 62.5%;
+}
+a {
+  font-size: 1.4rem;
 }
 * {
   box-sizing: border-box;
@@ -7,9 +15,6 @@
 }
 h2 {
   font-size: 3.5rem;
-}
-p {
-  font-size: 2rem;
 }
 .wrapper {
   background: #6d7175;
@@ -54,4 +59,51 @@ p {
 }
 .carousel .carousel-header .right-button {
   padding-left: 2rem;
+}
+.main-form {
+  font-size: 2rem;
+  color: #cbcbcb;
+  display: flex;
+  flex-direction: column;
+  background-color: rgba(26, 23, 26, 0.5);
+  width: 50%;
+  margin: 0 auto;
+  padding: 4% 6%;
+  text-align: left;
+  margin-top: 10%;
+  border-radius: 4px;
+}
+@media (max-width:550px) {
+  .main-form {
+    width: 80%;
+  }
+}
+.main-form .above-boxes {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 2px;
+}
+.main-form .text-box {
+  width: 100%;
+  margin-bottom: 5px;
+  border: 0;
+  padding: 5px;
+  background-color: #cbcbcb;
+  border-radius: 2px;
+}
+.main-form .bottom-form {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.main-form .bottom-form .submit-button {
+  border-radius: 2px;
+  padding: 10px;
+  border: 0;
+  color: #cbcbcb;
+  background-color: #c92b2b;
+}
+.signup-container {
+  height: 75vw;
+  background: radial-gradient(circle at 0 0, rgba(114, 22, 22, 0), #721616);
 }

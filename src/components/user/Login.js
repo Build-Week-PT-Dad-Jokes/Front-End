@@ -20,7 +20,7 @@ function LoginForm({status, values, errors, touched, isSubmitting }) {
   }, [status]);
 
   return (
-    <div className="form-container">
+    <div className="login-container">
       <Form className="main-form">
         <h1>Login</h1>
         <div className="errors"> 
@@ -28,6 +28,7 @@ function LoginForm({status, values, errors, touched, isSubmitting }) {
         <div>Email* {checkForError('email') && <span className="error-text">{errors.email}</span>}</div>
         <div>
           <Field 
+            className="text-box"
             type="email" 
             name="email" 
             // placeholder="Email" 
@@ -36,6 +37,7 @@ function LoginForm({status, values, errors, touched, isSubmitting }) {
         <div>Password*  {checkForError('password') && <span className="error-text">{errors.password}</span>}</div>
         <div>
           <Field 
+            className="text-box"
             type="password" 
             name="password" 
             // placeholder="Password" 
