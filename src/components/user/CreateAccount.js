@@ -2,6 +2,7 @@ import React, {useState, useEffect} from "react";
 import { withFormik, Form, Field } from "formik";
 import * as Yup from "yup";
 import axios from "axios"
+import {Link} from "react-router-dom"
 
 function CreateForm({status, values, errors, touched, isSubmitting }) {
 
@@ -55,7 +56,10 @@ function CreateForm({status, values, errors, touched, isSubmitting }) {
           />
         </div>
         <div>
-            Already have an account?  Login
+            Already have an account?  
+            <Link to="/login">
+              <p>Login</p>
+            </Link>
             {/* <a href={}>Login</a> */}
         </div>
 
