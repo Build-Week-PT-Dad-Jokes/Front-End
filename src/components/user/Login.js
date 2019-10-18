@@ -53,9 +53,9 @@ function LoginForm({status, values, errors, touched, isSubmitting }) {
         </div>
         <div className="bottom-form">
           <div>
-              Don't have an account?  
+              <p>Don't have an account? </p> 
               <Link to="/signup">
-                <p>Sign Up</p>
+                <p className="form-link">Create One</p>
               </Link>
           </div>
 

@@ -1,20 +1,27 @@
-.App {
-  font-family: 'Roboto', sans-serif;
-  text-align: center;
-  font-size: 4rem;
+* {
+  box-sizing: border-box;
 }
 html {
   font-size: 62.5%;
 }
-a {
-  font-size: 1.4rem;
+body {
+  font-size: 1.6rem;
 }
-* {
-  box-sizing: border-box;
-  font-size: 62.5%;
+.App {
+  font-family: 'Roboto', sans-serif;
+  text-align: center;
+}
+a {
+  text-decoration: none;
+}
+p {
+  margin: 0;
 }
 h2 {
   font-size: 3.5rem;
+}
+button {
+  font-size: 1.6rem;
 }
 .wrapper {
   background: #6d7175;
@@ -61,7 +68,6 @@ h2 {
   padding-left: 2rem;
 }
 .main-form {
-  font-size: 2rem;
   color: #cbcbcb;
   display: flex;
   flex-direction: column;
@@ -92,9 +98,16 @@ h2 {
   border-radius: 2px;
 }
 .main-form .bottom-form {
+  margin-top: 10px;
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+.main-form .bottom-form .form-link {
+  color: #e5872f;
+}
+.main-form .bottom-form .form-link:hover {
+  color: #ff9e44;
 }
 .main-form .bottom-form .submit-button {
   border-radius: 2px;
@@ -103,6 +116,9 @@ h2 {
   color: #cbcbcb;
   background-color: #c92b2b;
   cursor: pointer;
+}
+.main-form .bottom-form .submit-button:hover {
+  background-color: #d33030;
 }
 .signup-container {
   height: 75vw;

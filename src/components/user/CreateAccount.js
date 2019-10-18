@@ -45,7 +45,6 @@ function CreateForm({history, status, values, errors, touched, isSubmitting }) {
             className="text-box"
             type="name" 
             name="name" 
-            // placeholder="Name" 
           />
         </div>
         <div className="above-boxes">
@@ -58,7 +57,6 @@ function CreateForm({history, status, values, errors, touched, isSubmitting }) {
             className="text-box"
             type="password" 
             name="password" 
-            // placeholder="Password" 
           />
         </div>
         <div className="above-boxes">
@@ -71,26 +69,22 @@ function CreateForm({history, status, values, errors, touched, isSubmitting }) {
             className="text-box"
             type="password" 
             name="passwordConf" 
-            // placeholder="Confirm Password" 
           />
         </div>
         <div className="bottom-form">
           <div>
-              Already have an account?  
+              <p>Already have an account? </p> 
               <Link to="/login">
-                <p>Login</p>
+                <p className="form-link">Login</p>
               </Link>
           </div>
-
-          <button 
-            className="submit-button" 
-            type="submit" 
-            disabled={isSubmitting}>
-              Create Account
-          </button>
+            <button 
+              className="submit-button" 
+              type="submit" 
+              disabled={isSubmitting}>
+                Create Account
+            </button>
         </div>
-
-        
       </Form>
     </div>
     

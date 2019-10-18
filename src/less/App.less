@@ -1,26 +1,32 @@
 @img-path: "../public/img/";
 @mobile: ~'(max-width:550px)';
 
-.App {
-  font-family: 'Roboto', sans-serif;
-  text-align: center;
-  font-size: 4rem;
+* {
+  box-sizing: border-box;
 }
 html {
   font-size: 62.5%;
 }
-a {
-  font-size: 1.4rem;
+body{
+  font-size: 1.6rem;
+} 
+.App {
+  font-family: 'Roboto', sans-serif;
+  text-align: center;
 }
-* {
-  box-sizing: border-box;
-  font-size: 62.5%;
+a {
+  text-decoration: none;
+}
+p {
+  margin: 0;
 }
 
 h2 {
   font-size: 3.5rem;
 }
-
+button {
+  font-size: 1.6rem;
+}
 
 .wrapper {
   background: #6d7175;
@@ -77,7 +83,6 @@ h2 {
 
 //Create Account page
 .main-form {
-  font-size: 2rem;
   color: #cbcbcb;
   display: flex;
   flex-direction: column;
@@ -105,9 +110,16 @@ h2 {
     border-radius: 2px;
   }
   .bottom-form{
+    margin-top: 10px;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    .form-link {
+      color: #e5872f;
+      &:hover {
+        color: #ff9e44;
+      }
+    }
     .submit-button {
       border-radius: 2px;
       padding: 8px 12px;
@@ -115,6 +127,9 @@ h2 {
       color:#cbcbcb;
       background-color: #c92b2b;
       cursor: pointer;
+      &:hover {
+        background-color: lighten(#c92b2b, 3%);
+      }
     }
   }
 }
