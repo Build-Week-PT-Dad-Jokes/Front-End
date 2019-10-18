@@ -118,7 +118,7 @@ const FormikAccountForm = withFormik({
       .email("Invalid Email")
       .required("Email is required"),
     password: Yup.string()
-      .min(6, "Password must be 6 characters or longer")
+      .min(8, "Password must be 8 characters or longer")
       .required("Password is required"),
     passwordConf: Yup.string()
      .required("Please confirm password")

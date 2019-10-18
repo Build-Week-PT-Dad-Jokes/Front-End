@@ -21,20 +21,28 @@ function LoginForm({status, values, errors, touched, isSubmitting }) {
 
   return (
     <div className="login-container">
+      <h1>Login</h1>
       <Form className="main-form">
-        <h1>Login</h1>
+        
         <div className="errors"> 
         </div>
-        <div>Email* {checkForError('email') && <span className="error-text">{errors.email}</span>}</div>
+        <div className="above-boxes">
+          <span>Email* </span>
+          {checkForError('email') && <span className="error-text">{errors.email}</span>}
+        </div>
         <div>
           <Field 
             className="text-box"
             type="email" 
             name="email" 
-            // placeholder="Email" 
+            // placeholder="Email"                                                
           />
         </div>
-        <div>Password*  {checkForError('password') && <span className="error-text">{errors.password}</span>}</div>
+        <div className="above-boxes">
+          <span>Password*  </span>
+          {checkForError('password') && <span className="error-text">{errors.password}</span>}
+        </div>
+        
         <div>
           <Field 
             className="text-box"
@@ -43,19 +51,21 @@ function LoginForm({status, values, errors, touched, isSubmitting }) {
             // placeholder="Password" 
           />
         </div>
-        <div>
-            Don't have an account?  
-            <Link to="/signup">
-              <p>Sign Up</p>
-            </Link>
-        </div>
+        <div className="bottom-form">
+          <div>
+              Don't have an account?  
+              <Link to="/signup">
+                <p>Sign Up</p>
+              </Link>
+          </div>
 
-        <button 
-          className="submit-button" 
-          type="submit" 
-          disabled={isSubmitting}>
-            Sign In
-        </button>
+          <button 
+            className="submit-button" 
+            type="submit" 
+            disabled={isSubmitting}>
+              Login
+          </button>
+        </div>
       </Form>
     </div>
     
