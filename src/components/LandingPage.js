@@ -1,12 +1,11 @@
 import React from "react";
+import Header from './Header';
 
 const LandingPage = () => {
   return (
     <div className="wrapper">
       <div className="landing-page">
-        <header className="landing-page-header">
-          <div className="help-button">?</div>
-        </header>
+        <Header />
         <div className="carousel">
           <header className="carousel-header">
             <span className="left-button">{"<<"}</span>
