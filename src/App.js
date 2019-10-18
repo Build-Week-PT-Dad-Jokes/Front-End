@@ -6,6 +6,8 @@ import FormikAccountForm from './components/user/CreateAccount'
 import FormikLoginForm from './components/user/Login'
 import Header from "./components/Header"
 import Footer from "./components/Footer"
+import "./App.css";
+import LandingPage from './components/LandingPage';
 
 function App() {
   return (
@@ -26,6 +28,7 @@ function App() {
         }
       />
       <Footer />
+      <LandingPage />
     </div>
   );
 }
