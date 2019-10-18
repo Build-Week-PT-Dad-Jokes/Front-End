@@ -1,23 +1,36 @@
-import React, {useState, useEffect} from "react";
+import React from "react";
 import { withFormik, Form, Field } from "formik";
 import * as Yup from "yup";
 import axios from "axios"
 import {Link} from "react-router-dom"
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { 
+  faExclamationCircle, 
+  faCheckCircle, 
+  } from '@fortawesome/free-solid-svg-icons'
 
-function LoginForm({status, values, errors, touched, isSubmitting }) {
+function LoginForm({ errors, touched, isSubmitting }) {
 
-    const checkForError = (type) => {
+  const checkForError = (type) => {
         return touched[type] && errors[type]
       }
 
-  const [users, setUsers] = useState([]);
+  const showErrors = (type) => {
 
-  useEffect(() => {
-    if (status) {
-      setUsers([...users, status]);
+    if(checkForError(type)) {
+      return(
+        <div>
+          <span className="error-text">
+            {errors[type]}</span>
+          <FontAwesomeIcon className="error-icon" icon={faExclamationCircle}/>
+        </div>
+      )
     }
-    // eslint-disable-next-line
-  }, [status]);
+    else if(isSubmitting) {
+      return <FontAwesomeIcon className="check-icon" icon={faCheckCircle}/>
+    }
+  }
+
 
   return (
     <div className="login-container">
@@ -27,20 +40,19 @@ function LoginForm({status, values, errors, touched, isSubmitting }) {
         <div className="errors"> 
         </div>
         <div className="above-boxes">
-          <span>Email* </span>
-          {checkForError('email') && <span className="error-text">{errors.email}</span>}
+          <span>Username* </span>
+          {showErrors('name')}
         </div>
         <div>
           <Field 
             className="text-box"
-            type="email" 
-            name="email" 
-            // placeholder="Email"                                                
+            type="name" 
+            name="name" 
           />
         </div>
         <div className="above-boxes">
           <span>Password*  </span>
-          {checkForError('password') && <span className="error-text">{errors.password}</span>}
+          {showErrors('password')}
         </div>
         
         <div>
@@ -48,7 +60,6 @@ function LoginForm({status, values, errors, touched, isSubmitting }) {
             className="text-box"
             type="password" 
             name="password" 
-            // placeholder="Password" 
           />
         </div>
         <div className="bottom-form">
@@ -77,29 +88,35 @@ function LoginForm({status, values, errors, touched, isSubmitting }) {
 const FormikLoginForm = withFormik({
 
   
-  mapPropsToValues({ email, password }) {
+  mapPropsToValues({ name, password }) {
     return {
-      email: email || "",
+      name: name || "",
       password: password || "",
     };
   },
 
   validationSchema: Yup.object().shape({
     
-    email: Yup.string()
-      .required("Email is required"),
+    name: Yup.string()
+      .required("Username is required"),
     password: Yup.string()
       .required("Password is required"),
     
   }),
 
-handleSubmit(values, { resetForm, setErrors, setSubmitting, setStatus }) {
+handleSubmit(values, { resetForm, setErrors, setSubmitting, setStatus, props }) {
+    const {history} = props
+
+    //Need to confirm login credentials with a user on server
     axios
         .post("https://reqres.in/api/users", values)
         .then(response => {
           resetForm();
           setSubmitting(false);
           setStatus(response.data)
+        })
+        .then(()=>{
+          history.push('/')
         })
         .catch(err => {
           console.log(err); 

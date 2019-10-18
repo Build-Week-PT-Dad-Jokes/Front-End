@@ -79,6 +79,11 @@ button {
   margin-top: 10%;
   border-radius: 4px;
 }
+@media (max-width:885px) {
+  .main-form {
+    width: 70%;
+  }
+}
 @media (max-width:550px) {
   .main-form {
     width: 80%;
@@ -88,6 +93,21 @@ button {
   display: flex;
   justify-content: space-between;
   margin-bottom: 2px;
+}
+.main-form .above-boxes .error-text {
+  color: #c92b2b;
+}
+.main-form .above-boxes .error-icon {
+  color: #c92b2b;
+  position: relative;
+  top: 24px;
+  right: 16px;
+}
+.main-form .above-boxes .check-icon {
+  color: green;
+  position: relative;
+  top: 24px;
+  right: 16px;
 }
 .main-form .text-box {
   width: 100%;

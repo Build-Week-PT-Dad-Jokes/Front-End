@@ -1,23 +1,34 @@
-import React, {useState, useEffect} from "react";
+import React from "react";
 import { withFormik, Form, Field } from "formik";
 import * as Yup from "yup";
 import axios from "axios"
 import {Link} from "react-router-dom"
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { 
+  faExclamationCircle, 
+  faCheckCircle, 
+  } from '@fortawesome/free-solid-svg-icons'
 
-function CreateForm({history, status, values, errors, touched, isSubmitting }) {
+function CreateForm({ errors, touched, isSubmitting }) {
 
   const checkForError = (type) => {
         return touched[type] && errors[type]
       }
+  const showErrors = (type) => {
 
-  const [users, setUsers] = useState([]);
-
-  useEffect(() => {
-    if (status) {
-      setUsers([...users, status]);
+    if(checkForError(type)) {
+      return(
+        <div>
+          <span className="error-text">
+            {errors[type]}</span>
+          <FontAwesomeIcon className="error-icon" icon={faExclamationCircle}/>
+        </div>
+      )
     }
-    // eslint-disable-next-line
-  }, [status]);
+    else if(isSubmitting) {
+      return <FontAwesomeIcon className="check-icon" icon={faCheckCircle}/>
+    }
+  }
 
   return (
     <div className="signup-container">
@@ -25,21 +36,19 @@ function CreateForm({history, status, values, errors, touched, isSubmitting }) {
       <Form className="main-form">
         <div className="above-boxes">
           <span>Email*</span> 
-          {checkForError('email') && <span className="error-text">{errors.email}</span>}
+          {showErrors('email')}
         </div>
         <div>
           <Field 
             className="text-box"
             type="email" 
             name="email" 
-            // placeholder="Email" 
           />
         </div>
         <div className="above-boxes">
           <span>Username* </span>
-          {checkForError('name') && <span className="error-text">{errors.name}</span>}
+          {showErrors('name')}
         </div>
-        
         <div>
           <Field 
             className="text-box"
@@ -49,7 +58,7 @@ function CreateForm({history, status, values, errors, touched, isSubmitting }) {
         </div>
         <div className="above-boxes">
           <span>Password* </span>
-          {checkForError('password') && <span className="error-text">{errors.password}</span>}
+          {showErrors('password')}
         </div>
         
         <div>
@@ -61,7 +70,7 @@ function CreateForm({history, status, values, errors, touched, isSubmitting }) {
         </div>
         <div className="above-boxes">
           <span>Confirm Password* </span>
-          {checkForError('passwordConf') && <span className="error-text">{errors.passwordConf}</span>}
+          {showErrors('passwordConf')}
         </div>
         
         <div>
@@ -107,7 +116,7 @@ const FormikAccountForm = withFormik({
 
   validationSchema: Yup.object().shape({
     name: Yup.string()
-      .required("Name is required"),
+      .required("Username is required"),
     email: Yup.string()
       .email("Invalid Email")
       .required("Email is required"),
@@ -119,7 +128,10 @@ const FormikAccountForm = withFormik({
      .oneOf([Yup.ref('password'), null], 'Passwords do not match')
   }),
 
-handleSubmit(values, { resetForm, setErrors, setSubmitting, setStatus }) {
+handleSubmit(values, { resetForm, setErrors, setSubmitting, setStatus, props }) {
+  const {history} = props
+
+  //Need to check for username or email already in use on existing users on server
     axios
         .post("https://reqres.in/api/users", values)
         .then(response => {
@@ -127,8 +139,8 @@ handleSubmit(values, { resetForm, setErrors, setSubmitting, setStatus }) {
           setSubmitting(false);
           setStatus(response.data)
         })
-        .then(resp=>{
-          
+        .then(()=>{
+          history.push('/')
         })
         .catch(err => {
           console.log(err); 
