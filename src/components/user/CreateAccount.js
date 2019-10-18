@@ -4,7 +4,7 @@ import * as Yup from "yup";
 import axios from "axios"
 import {Link} from "react-router-dom"
 
-function CreateForm({status, values, errors, touched, isSubmitting }) {
+function CreateForm({history, status, values, errors, touched, isSubmitting }) {
 
   const checkForError = (type) => {
         return touched[type] && errors[type]
@@ -60,7 +60,6 @@ function CreateForm({status, values, errors, touched, isSubmitting }) {
             <Link to="/login">
               <p>Login</p>
             </Link>
-            {/* <a href={}>Login</a> */}
         </div>
 
         <button 
@@ -110,6 +109,9 @@ handleSubmit(values, { resetForm, setErrors, setSubmitting, setStatus }) {
           resetForm();
           setSubmitting(false);
           setStatus(response.data)
+        })
+        .then(resp=>{
+          
         })
         .catch(err => {
           console.log(err); 
