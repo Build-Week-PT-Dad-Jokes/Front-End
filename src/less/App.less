@@ -1,4 +1,12 @@
+//mixins
+.theme (@mode) when (@mode = "dark") {
+  color: #cbcbcb;
+}
+.theme (@mode) when (@mode = "light") {
+  color: black;
+}
 
+//@media variables
 @mobile: ~'(max-width:550px)';
 @tablet: ~'(max-width:885px)';
 
@@ -150,13 +158,13 @@ span {
     .error-icon {
       color: #c92b2b;
       position: relative;
-      top: 24px;
+      top: 26px;
       right: 16px;
     }
     .check-icon {
       color: green;
       position: relative;
-      top: 24px;
+      top: 26px;
       right: 16px;
     }
   }
@@ -221,7 +229,7 @@ span {
   bottom: 0;
   right: 0;
   width: 100%;
-  background-color: rgba(255,255,255,.2);
+  background-color: rgba(125,125,125,.2);
   padding: 10px 0;
   .contact-us {
     margin-right: 10px;

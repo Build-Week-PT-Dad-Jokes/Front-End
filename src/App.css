@@ -138,13 +138,13 @@ span {
 .main-form .above-boxes .error-icon {
   color: #c92b2b;
   position: relative;
-  top: 24px;
+  top: 26px;
   right: 16px;
 }
 .main-form .above-boxes .check-icon {
   color: green;
   position: relative;
-  top: 24px;
+  top: 26px;
   right: 16px;
 }
 .main-form .text-box {
@@ -202,7 +202,7 @@ span {
   bottom: 0;
   right: 0;
   width: 100%;
-  background-color: rgba(255, 255, 255, 0.2);
+  background-color: rgba(125, 125, 125, 0.2);
   padding: 10px 0;
 }
 .footer .contact-us {
