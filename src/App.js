@@ -8,8 +8,6 @@ import FormikLoginForm from './components/user/Login'
 import Header from "./components/Header"
 import Footer from "./components/Footer"
 import LandingPage from './components/LandingPage';
-import React from "react";
-import { Route } from "react-router";
 
 function App() {
   return (
