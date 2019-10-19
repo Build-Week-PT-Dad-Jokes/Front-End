@@ -6,10 +6,12 @@ import {Link} from "react-router-dom"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { 
   faExclamationCircle, 
-  faCheckCircle, 
+  faCheckCircle,
   } from '@fortawesome/free-solid-svg-icons'
+import moment from "moment"
+import PulseLoader from 'react-spinners/PulseLoader';
 
-function CreateForm({ errors, touched, isSubmitting }) {
+function CreateForm({ status, errors, touched, isSubmitting }) {
 
   const checkForError = (type) => {
         return touched[type] && errors[type]
@@ -34,6 +36,7 @@ function CreateForm({ errors, touched, isSubmitting }) {
     <div className="signup-container">
       {/* <h1>Sign up</h1> */}
       <Form className="main-form">
+        {!!status && <p style={{color: '#c92b2b'}}>{status.error}</p>}
         <div className="above-boxes">
           <span>Email*</span> 
           {showErrors('email')}
@@ -91,7 +94,9 @@ function CreateForm({ errors, touched, isSubmitting }) {
               className="submit-button" 
               type="submit" 
               disabled={isSubmitting}>
-                Create Account
+                {!!isSubmitting 
+                  ? <PulseLoader className="pulse-loader" color="rgb(199, 199, 199)"/> 
+                  : 'Create Account'}
             </button>
         </div>
       </Form>
@@ -128,12 +133,20 @@ const FormikAccountForm = withFormik({
      .oneOf([Yup.ref('password'), null], 'Passwords do not match')
   }),
 
-handleSubmit(values, { resetForm, setErrors, setSubmitting, setStatus, props }) {
+handleSubmit(values, { resetForm, setSubmitting, setStatus, props }) {
   const {history} = props
+  const currentTime = moment().unix()
+  const newUser = {
+    username: values.name,
+    password: values.password,
+    email: values.email,
+    date_created: currentTime
+  }
+  console.log(JSON.stringify(newUser))
 
   //Need to check for username or email already in use on existing users on server
     axios
-        .post("https://reqres.in/api/users", values)
+        .post("https://dadjokesbw.herokuapp.com/api/auth/register", newUser)
         .then(response => {
           resetForm();
           setSubmitting(false);
@@ -143,9 +156,10 @@ handleSubmit(values, { resetForm, setErrors, setSubmitting, setStatus, props }) 
           history.push('/')
         })
         .catch(err => {
-          console.log(err); 
+          console.log(err);
           setSubmitting(false);
-        });
+          setStatus({error: "Username not available"})
+        })
     }
 })(CreateForm);
 
