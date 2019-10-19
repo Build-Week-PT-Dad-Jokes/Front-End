@@ -1,59 +1,82 @@
-import React, {useState, useEffect} from "react";
+import React from "react";
 import { withFormik, Form, Field } from "formik";
 import * as Yup from "yup";
 import axios from "axios"
 import {Link} from "react-router-dom"
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { 
+  faExclamationCircle, 
+  faCheckCircle, 
+  } from '@fortawesome/free-solid-svg-icons'
 
-function LoginForm({status, values, errors, touched, isSubmitting }) {
+function LoginForm({ errors, touched, isSubmitting }) {
 
-    const checkForError = (type) => {
+  const checkForError = (type) => {
         return touched[type] && errors[type]
       }
 
-  const [users, setUsers] = useState([]);
+  const showErrors = (type) => {
 
-  useEffect(() => {
-    if (status) {
-      setUsers([...users, status]);
+    if(checkForError(type)) {
+      return(
+        <div>
+          <span className="error-text">
+            {errors[type]}</span>
+          <FontAwesomeIcon className="error-icon" icon={faExclamationCircle}/>
+        </div>
+      )
     }
-    // eslint-disable-next-line
-  }, [status]);
+    else if(isSubmitting) {
+      return <FontAwesomeIcon className="check-icon" icon={faCheckCircle}/>
+    }
+  }
+
 
   return (
-    <div className="form-container">
+    <div className="login-container">
+      {/* <h1>Login</h1> */}
       <Form className="main-form">
-        <h1>Login</h1>
+        
         <div className="errors"> 
         </div>
-        <div>Email* {checkForError('email') && <span className="error-text">{errors.email}</span>}</div>
+        <div className="above-boxes">
+          <span>Username* </span>
+          {showErrors('name')}
+        </div>
         <div>
           <Field 
-            type="email" 
-            name="email" 
-            // placeholder="Email" 
+            className="text-box"
+            type="name" 
+            name="name" 
           />
         </div>
-        <div>Password*  {checkForError('password') && <span className="error-text">{errors.password}</span>}</div>
+        <div className="above-boxes">
+          <span>Password*  </span>
+          {showErrors('password')}
+        </div>
+        
         <div>
           <Field 
+            className="text-box"
             type="password" 
             name="password" 
-            // placeholder="Password" 
           />
         </div>
-        <div>
-            Don't have an account?  
-            <Link to="/signup">
-              <p>Sign Up</p>
-            </Link>
-        </div>
+        <div className="bottom-form">
+          <div>
+              <p>Don't have an account? </p> 
+              <Link to="/signup">
+                <p className="form-link">Create One</p>
+              </Link>
+          </div>
 
-        <button 
-          className="submit-button" 
-          type="submit" 
-          disabled={isSubmitting}>
-            Sign In
-        </button>
+          <button 
+            className="submit-button" 
+            type="submit" 
+            disabled={isSubmitting}>
+              Login
+          </button>
+        </div>
       </Form>
     </div>
     
@@ -65,29 +88,35 @@ function LoginForm({status, values, errors, touched, isSubmitting }) {
 const FormikLoginForm = withFormik({
 
   
-  mapPropsToValues({ email, password }) {
+  mapPropsToValues({ name, password }) {
     return {
-      email: email || "",
+      name: name || "",
       password: password || "",
     };
   },
 
   validationSchema: Yup.object().shape({
     
-    email: Yup.string()
-      .required("Email is required"),
+    name: Yup.string()
+      .required("Username is required"),
     password: Yup.string()
       .required("Password is required"),
     
   }),
 
-handleSubmit(values, { resetForm, setErrors, setSubmitting, setStatus }) {
+handleSubmit(values, { resetForm, setErrors, setSubmitting, setStatus, props }) {
+    const {history} = props
+
+    //Need to confirm login credentials with a user on server
     axios
         .post("https://reqres.in/api/users", values)
         .then(response => {
           resetForm();
           setSubmitting(false);
           setStatus(response.data)
+        })
+        .then(()=>{
+          history.push('/')
         })
         .catch(err => {
           console.log(err); 
