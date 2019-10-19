@@ -35,7 +35,7 @@ button {
 body,
 p,
 span {
-  font-size: 2rem;
+  font-size: 1.6rem;
 }
 
 .wrapper {
@@ -45,6 +45,9 @@ span {
 }
 
 .landing-page-header {
+  position: absolute;
+  top: 0;
+  left: 0;
   display: flex;
   justify-content: left;
   padding: 1rem 0;
@@ -52,15 +55,20 @@ span {
   margin: 0 auto;
 
   .help-button {
-    padding: 1rem;
-    border: 0.2rem solid gray;
+    margin-left: 10px;
+    color: #cbcbcb;
+    cursor: pointer;
+    padding: .6rem;
     border-radius: 50%;
     text-align: center;
     vertical-align: middle;
-    background: white;
+    background: rgba(125, 125, 125, 0.6);
     font-size: 2rem;
-    width: 5rem;
-    height: 5rem;
+    width: 4rem;
+    height: 4rem;
+    span {
+      font-size: 2.6rem;
+    }
   }
 }
 
@@ -182,6 +190,20 @@ span {
         background-color: lighten(#c92b2b, 3%);
       }
     }
+  }
+}
+
+.footer {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  background-color: rgba(255,255,255,.2);
+  padding: 10px 0;
+  .contact-us {
+    margin-right: 10px;
+    color: #cbcbcb;
+    text-align: right;
   }
 }
 

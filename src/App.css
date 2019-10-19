@@ -29,7 +29,7 @@ button {
 body,
 p,
 span {
-  font-size: 2rem;
+  font-size: 1.6rem;
 }
 .wrapper {
   background: #6d7175;
@@ -37,6 +37,9 @@ span {
   height: 100vh;
 }
 .landing-page-header {
+  position: absolute;
+  top: 0;
+  left: 0;
   display: flex;
   justify-content: left;
   padding: 1rem 0;
@@ -44,15 +47,20 @@ span {
   margin: 0 auto;
 }
 .landing-page-header .help-button {
-  padding: 1rem;
-  border: 0.2rem solid gray;
+  margin-left: 10px;
+  color: #cbcbcb;
+  cursor: pointer;
+  padding: 0.6rem;
   border-radius: 50%;
   text-align: center;
   vertical-align: middle;
-  background: white;
+  background: rgba(125, 125, 125, 0.6);
   font-size: 2rem;
-  width: 5rem;
-  height: 5rem;
+  width: 4rem;
+  height: 4rem;
+}
+.landing-page-header .help-button span {
+  font-size: 2.6rem;
 }
 .landing-page {
   display: flex;
@@ -169,4 +177,17 @@ span {
 }
 .main-form .bottom-form .submit-button:hover {
   background-color: #d33030;
+}
+.footer {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  background-color: rgba(255, 255, 255, 0.2);
+  padding: 10px 0;
+}
+.footer .contact-us {
+  margin-right: 10px;
+  color: #cbcbcb;
+  text-align: right;
 }

@@ -3,7 +3,7 @@ import React from "react";
 function Header() {
   return (
     <header className="landing-page-header">
-      <div className="help-button">?</div>
+      <div className="help-button"><span>?</span></div>
     </header>
   );
 }
