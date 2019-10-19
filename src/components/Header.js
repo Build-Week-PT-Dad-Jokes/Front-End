@@ -1,9 +1,11 @@
-import React from "react"
+import React from "react";
 
 function Header() {
-    return (
-        <h2>Header</h2>
-    )
+  return (
+    <header className="landing-page-header">
+      <div className="help-button">?</div>
+    </header>
+  );
 }
 
-export default Header
+export default Header;
