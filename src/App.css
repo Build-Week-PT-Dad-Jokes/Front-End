@@ -179,6 +179,24 @@ span {
 .main-form .bottom-form .submit-button:hover {
   background-color: #d33030;
 }
+.home-container .jokes-container {
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.home-container .jokes-container .single-joke {
+  background: #721616;
+  padding: 5px;
+  margin: 10px;
+  width: 90%;
+}
+.home-container .jokes-container .single-joke p {
+  color: #cbcbcb;
+}
+.home-container .jokes-container .single-joke .second-part {
+  color: #ff9e44;
+}
 .footer {
   position: absolute;
   bottom: 0;

@@ -153,7 +153,7 @@ handleSubmit(values, { resetForm, setSubmitting, setStatus, props }) {
           setStatus(response.data)
         })
         .then(()=>{
-          history.push('/')
+          history.push('/home')
         })
         .catch(err => {
           console.log(err);
