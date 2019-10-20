@@ -10,6 +10,7 @@ import {
   } from '@fortawesome/free-solid-svg-icons'
 import moment from "moment"
 import PulseLoader from 'react-spinners/PulseLoader';
+import { connect } from 'react-redux';
 
 function CreateForm({ status, errors, touched, isSubmitting }) {
 
@@ -151,16 +152,17 @@ handleSubmit(values, { resetForm, setSubmitting, setStatus, props }) {
           resetForm();
           setSubmitting(false);
           setStatus(response.data)
+          console.log(response);
         })
         .then(()=>{
           history.push('/home')
         })
         .catch(err => {
-          console.log(err);
+          console.log(err.response);
           setSubmitting(false);
           setStatus({error: "Username not available"})
         })
     }
 })(CreateForm);
 
-export default FormikAccountForm;
+export default connect(null, {})(FormikAccountForm);
