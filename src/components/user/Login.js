@@ -114,9 +114,10 @@ handleSubmit(values, { resetForm, setErrors, setSubmitting, setStatus, props }) 
         .then(res => {
           resetForm();
           setSubmitting(false);
-          setStatus(res.data)
-          console.log('Login.js: handleSubmit: res: ', res)
-          history.push('/home')
+          setStatus(res.data);
+          console.log('Login.js: handleSubmit: res: ', res);
+          loginUser(res.data);
+          history.push('/home');
         })
         .catch(err => {
           console.error(err.response); 
