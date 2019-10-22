@@ -8,6 +8,8 @@ import {
   faExclamationCircle, 
   faCheckCircle, 
   } from '@fortawesome/free-solid-svg-icons'
+import { connect } from 'react-redux';
+import { loginUser } from '../../actions';
 
 function LoginForm({ errors, touched, isSubmitting }) {
 
@@ -41,13 +43,13 @@ function LoginForm({ errors, touched, isSubmitting }) {
         </div>
         <div className="above-boxes">
           <span>Username* </span>
-          {showErrors('name')}
+          {showErrors('username')}
         </div>
         <div>
           <Field 
             className="text-box"
             type="name" 
-            name="name" 
+            name="username" 
           />
         </div>
         <div className="above-boxes">
@@ -87,17 +89,16 @@ function LoginForm({ errors, touched, isSubmitting }) {
 
 const FormikLoginForm = withFormik({
 
-  
-  mapPropsToValues({ name, password }) {
+  mapPropsToValues({ username, password }) {
     return {
-      name: name || "",
+      username: username || "",
       password: password || "",
     };
   },
 
   validationSchema: Yup.object().shape({
     
-    name: Yup.string()
+    username: Yup.string()
       .required("Username is required"),
     password: Yup.string()
       .required("Password is required"),
@@ -105,24 +106,23 @@ const FormikLoginForm = withFormik({
   }),
 
 handleSubmit(values, { resetForm, setErrors, setSubmitting, setStatus, props }) {
-    const {history} = props
+    const { history, loginUser } = props
 
     //Need to confirm login credentials with a user on server
     axios
-        .post("https://reqres.in/api/users", values)
-        .then(response => {
+        .post("https://dadjokesbw.herokuapp.com/api/auth/login", values)
+        .then(res => {
           resetForm();
           setSubmitting(false);
-          setStatus(response.data)
-        })
-        .then(()=>{
-          history.push('/')
+          setStatus(res.data)
+          console.log('Login.js: handleSubmit: res: ', res)
+          history.push('/home')
         })
         .catch(err => {
-          console.log(err); 
+          console.error(err.response); 
           setSubmitting(false);
         });
     }
 })(LoginForm);
 
-export default FormikLoginForm;
+export default connect(null, {loginUser})(FormikLoginForm);
