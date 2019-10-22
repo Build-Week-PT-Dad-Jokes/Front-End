@@ -5,6 +5,8 @@ import axios from "axios"
 import {Link} from "react-router-dom"
 import moment from "moment"
 import PulseLoader from 'react-spinners/PulseLoader';
+import { connect } from 'react-redux';
+import { loginUser } from '../../actions';
 import {showErrors} from "./userUtils"
 
 function CreateForm({ status, errors, touched, isSubmitting }) {
@@ -110,7 +112,7 @@ const FormikAccountForm = withFormik({
   }),
 
 handleSubmit(values, { resetForm, setSubmitting, setStatus, props }) {
-  const {history} = props
+  const {history, loginUser} = props
   const currentTime = moment().unix()
   const newUser = {
     username: values.name,
@@ -126,16 +128,16 @@ handleSubmit(values, { resetForm, setSubmitting, setStatus, props }) {
           resetForm();
           setSubmitting(false);
           setStatus(response.data)
-        })
-        .then(()=>{
+          loginUser(response.data);
+          localStorage.setItem("token", response.data.token);
           history.push('/home')
         })
         .catch(err => {
-          console.log(err);
+          console.log(err.response);
           setSubmitting(false);
           setStatus({error: "Username not available"})
         })
     }
 })(CreateForm);
 
-export default FormikAccountForm;
+export default connect(null, { loginUser })(FormikAccountForm);
