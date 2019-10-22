@@ -3,45 +3,21 @@ import { withFormik, Form, Field } from "formik";
 import * as Yup from "yup";
 import axios from "axios"
 import {Link} from "react-router-dom"
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { 
-  faExclamationCircle, 
-  faCheckCircle,
-  } from '@fortawesome/free-solid-svg-icons'
 import moment from "moment"
 import PulseLoader from 'react-spinners/PulseLoader';
 import { connect } from 'react-redux';
 import { loginUser } from '../../actions';
+import {showErrors} from "./userUtils"
 
 function CreateForm({ status, errors, touched, isSubmitting }) {
 
-  const checkForError = (type) => {
-        return touched[type] && errors[type]
-      }
-  const showErrors = (type) => {
-
-    if(checkForError(type)) {
-      return(
-        <div>
-          <span className="error-text">
-            {errors[type]}</span>
-          <FontAwesomeIcon className="error-icon" icon={faExclamationCircle}/>
-        </div>
-      )
-    }
-    else if(isSubmitting) {
-      return <FontAwesomeIcon className="check-icon" icon={faCheckCircle}/>
-    }
-  }
-
   return (
     <div className="signup-container">
-      {/* <h1>Sign up</h1> */}
       <Form className="main-form">
         {!!status && <p style={{color: '#c92b2b'}}>{status.error}</p>}
         <div className="above-boxes">
           <span>Email*</span> 
-          {showErrors('email')}
+          {showErrors('email', isSubmitting, touched, errors)}
         </div>
         <div>
           <Field 
@@ -52,7 +28,7 @@ function CreateForm({ status, errors, touched, isSubmitting }) {
         </div>
         <div className="above-boxes">
           <span>Username* </span>
-          {showErrors('name')}
+          {showErrors('name', isSubmitting, touched, errors)}
         </div>
         <div>
           <Field 
@@ -63,7 +39,7 @@ function CreateForm({ status, errors, touched, isSubmitting }) {
         </div>
         <div className="above-boxes">
           <span>Password* </span>
-          {showErrors('password')}
+          {showErrors('password', isSubmitting, touched, errors)}
         </div>
         
         <div>
@@ -75,7 +51,7 @@ function CreateForm({ status, errors, touched, isSubmitting }) {
         </div>
         <div className="above-boxes">
           <span>Confirm Password* </span>
-          {showErrors('passwordConf')}
+          {showErrors('passwordConf', isSubmitting, touched, errors)}
         </div>
         
         <div>
@@ -97,7 +73,7 @@ function CreateForm({ status, errors, touched, isSubmitting }) {
               type="submit" 
               disabled={isSubmitting}>
                 {!!isSubmitting 
-                  ? <PulseLoader className="pulse-loader" color="rgb(199, 199, 199)"/> 
+                  ? <PulseLoader className="pulse-loader" color="#cbcbcb"/> 
                   : 'Create Account'}
             </button>
         </div>
@@ -144,7 +120,6 @@ handleSubmit(values, { resetForm, setSubmitting, setStatus, props }) {
     email: values.email,
     date_created: currentTime
   }
-  console.log(JSON.stringify(newUser))
 
   //Need to check for username or email already in use on existing users on server
     axios
@@ -153,7 +128,6 @@ handleSubmit(values, { resetForm, setSubmitting, setStatus, props }) {
           resetForm();
           setSubmitting(false);
           setStatus(response.data)
-          console.log(response);
           loginUser(response.data);
           localStorage.setItem("token", response.data.token);
           history.push('/home')
