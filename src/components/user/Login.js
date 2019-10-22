@@ -3,45 +3,21 @@ import { withFormik, Form, Field } from "formik";
 import * as Yup from "yup";
 import axios from "axios"
 import {Link} from "react-router-dom"
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { 
-  faExclamationCircle, 
-  faCheckCircle, 
-  } from '@fortawesome/free-solid-svg-icons'
+import {showErrors} from "./userUtils"
+import PulseLoader from 'react-spinners/PulseLoader';
+  
 
 function LoginForm({ errors, touched, isSubmitting }) {
 
-  const checkForError = (type) => {
-        return touched[type] && errors[type]
-      }
-
-  const showErrors = (type) => {
-
-    if(checkForError(type)) {
-      return(
-        <div>
-          <span className="error-text">
-            {errors[type]}</span>
-          <FontAwesomeIcon className="error-icon" icon={faExclamationCircle}/>
-        </div>
-      )
-    }
-    else if(isSubmitting) {
-      return <FontAwesomeIcon className="check-icon" icon={faCheckCircle}/>
-    }
-  }
-
-
   return (
     <div className="login-container">
-      {/* <h1>Login</h1> */}
       <Form className="main-form">
         
         <div className="errors"> 
         </div>
         <div className="above-boxes">
           <span>Username* </span>
-          {showErrors('name')}
+          {showErrors('name',  isSubmitting, touched, errors)}
         </div>
         <div>
           <Field 
@@ -52,7 +28,7 @@ function LoginForm({ errors, touched, isSubmitting }) {
         </div>
         <div className="above-boxes">
           <span>Password*  </span>
-          {showErrors('password')}
+          {showErrors('password', isSubmitting, touched, errors)}
         </div>
         
         <div>
@@ -74,7 +50,9 @@ function LoginForm({ errors, touched, isSubmitting }) {
             className="submit-button" 
             type="submit" 
             disabled={isSubmitting}>
-              Login
+              {!!isSubmitting 
+                  ? <PulseLoader className="pulse-loader" color="#cbcbcb"/> 
+                  : 'Login'}
           </button>
         </div>
       </Form>
@@ -104,7 +82,7 @@ const FormikLoginForm = withFormik({
     
   }),
 
-handleSubmit(values, { resetForm, setErrors, setSubmitting, setStatus, props }) {
+handleSubmit(values, { resetForm, setSubmitting, setStatus, props }) {
     const {history} = props
 
     //Need to confirm login credentials with a user on server
@@ -116,7 +94,7 @@ handleSubmit(values, { resetForm, setErrors, setSubmitting, setStatus, props }) 
           setStatus(response.data)
         })
         .then(()=>{
-          history.push('/')
+          history.push('/home')
         })
         .catch(err => {
           console.log(err); 
