@@ -1,10 +1,4 @@
-//mixins
-.theme (@mode) when (@mode = "dark") {
-  color: #cbcbcb;
-}
-.theme (@mode) when (@mode = "light") {
-  color: black;
-}
+
 
 //@media variables
 @mobile: ~'(max-width:550px)';
@@ -25,6 +19,8 @@ body{
 .App {
   font-family: 'Roboto', sans-serif;
   text-align: center;
+  position: relative;
+  min-height: 100vh;
 }
 a {
   text-decoration: none;
@@ -209,6 +205,7 @@ span {
     display: flex;
     flex-direction: column;
     align-items: center;
+    padding-bottom: 100px;
     .single-joke {
       background: #721616;
       padding: 5px;
@@ -229,11 +226,12 @@ span {
   bottom: 0;
   right: 0;
   width: 100%;
-  background-color: rgba(125,125,125,.2);
+  background-color: rgba(125,125,125,.6);
   padding: 10px 0;
   .contact-us {
     margin-right: 10px;
     color: #cbcbcb;
+    // color: white;
     text-align: right;
   }
 }

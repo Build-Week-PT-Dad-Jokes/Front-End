@@ -82,7 +82,7 @@ const FormikLoginForm = withFormik({
     
   }),
 
-handleSubmit(values, { resetForm, setErrors, setSubmitting, setStatus, props }) {
+handleSubmit(values, { resetForm, setSubmitting, setStatus, props }) {
     const {history} = props
 
     //Need to confirm login credentials with a user on server

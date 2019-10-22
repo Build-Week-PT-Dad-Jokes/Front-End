@@ -118,7 +118,6 @@ handleSubmit(values, { resetForm, setSubmitting, setStatus, props }) {
     email: values.email,
     date_created: currentTime
   }
-  console.log(JSON.stringify(newUser))
 
   //Need to check for username or email already in use on existing users on server
     axios
