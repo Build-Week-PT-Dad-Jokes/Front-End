@@ -117,6 +117,7 @@ handleSubmit(values, { resetForm, setErrors, setSubmitting, setStatus, props }) 
           setStatus(res.data);
           console.log('Login.js: handleSubmit: res: ', res);
           loginUser(res.data);
+          localStorage.setItem("token", res.data.token)
           history.push('/home');
         })
         .catch(err => {
