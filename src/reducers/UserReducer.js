@@ -1,3 +1,5 @@
+import useSetInStorage from '../hooks/useSetInStorage';
+
 import { LOGIN_USER } from "../actions";
 
 const initialState = {
@@ -9,9 +11,12 @@ const initialState = {
 export const userReducer = (state = initialState, action) => {
   switch (action.type) {
     case LOGIN_USER:
+      const [token, setToken] = useSetInStorage("token");
+      setToken(action.payload.token);
+
       return {
         ...state,
-        token: action.payload.token,
+        token: token,
         userID: action.payload.userID,
         username: action.payload.username
       }
