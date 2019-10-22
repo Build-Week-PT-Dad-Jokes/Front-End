@@ -11,6 +11,7 @@ import {
 import moment from "moment"
 import PulseLoader from 'react-spinners/PulseLoader';
 import { connect } from 'react-redux';
+import { loginUser } from '../../actions';
 
 function CreateForm({ status, errors, touched, isSubmitting }) {
 
@@ -135,7 +136,7 @@ const FormikAccountForm = withFormik({
   }),
 
 handleSubmit(values, { resetForm, setSubmitting, setStatus, props }) {
-  const {history} = props
+  const {history, loginUser} = props
   const currentTime = moment().unix()
   const newUser = {
     username: values.name,
@@ -153,8 +154,8 @@ handleSubmit(values, { resetForm, setSubmitting, setStatus, props }) {
           setSubmitting(false);
           setStatus(response.data)
           console.log(response);
-        })
-        .then(()=>{
+          loginUser(response.data);
+          localStorage.setItem("token", response.data.token);
           history.push('/home')
         })
         .catch(err => {
@@ -165,4 +166,4 @@ handleSubmit(values, { resetForm, setSubmitting, setStatus, props }) {
     }
 })(CreateForm);
 
-export default connect(null, {})(FormikAccountForm);
+export default connect(null, { loginUser })(FormikAccountForm);
