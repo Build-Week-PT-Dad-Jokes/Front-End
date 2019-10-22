@@ -1,5 +1,3 @@
-import useSetInStorage from "../hooks/useSetInStorage";
-
 import { LOGIN_USER } from "../actions";
 
 const initialState = {
