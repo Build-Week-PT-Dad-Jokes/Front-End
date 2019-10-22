@@ -9,6 +9,7 @@ import Header from "./components/Header"
 import Footer from "./components/Footer"
 import LandingPage from './components/LandingPage';
 import Home from "./components/Home"
+import JokesList from "./components/JokesList"
 
 function App() {
   return (
@@ -28,6 +29,11 @@ function App() {
           render={props=> 
             <FormikLoginForm {...props} validateOnChange={false} validateOnBlur={false}/>
           }
+        />
+        <Route
+          exact
+          path="/profile"
+          component={JokesList}
         />
         <Route exact path="/" render={props => <LandingPage {...props} />} />
         <Route exact path="/home" render={props => <Home {...props} />}/>

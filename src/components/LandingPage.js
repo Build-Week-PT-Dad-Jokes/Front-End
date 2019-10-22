@@ -43,7 +43,11 @@ const LandingPage = props => {
             <span>
               Already have an account? <Link to="/login">Login</Link>
             </span>
-            <Button className={classes.button}>Continue As Guest</Button>
+            <Button className={classes.button}>
+              <span>
+                <Link to="/profile">Continue As Guest </Link>
+            </span>
+              </Button>
           </section>
         </div>
       </div>
