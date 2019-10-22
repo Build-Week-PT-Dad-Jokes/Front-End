@@ -1,5 +1,6 @@
 import React from 'react';
-import {Route, Redirect, Switch} from "react-router"
+import {Route, Redirect, Switch} from "react-router";
+import PrivateRoute from './utils/PrivateRoute';
 import "./App.css";
 
 //component import
@@ -30,8 +31,8 @@ function App() {
           }
         />
         <Route exact path="/" render={props => <LandingPage {...props} />} />
-        <Route exact path="/home" render={props => <Home {...props} />}/>
-        <Route render={() => <Redirect to={{pathname: "/"}} />} />
+        <PrivateRoute exact path="/home" render={props => <Home {...props} />}/>
+        {/* <Route render={() => <Redirect to={{pathname: "/"}} />} /> */}
       </Switch>
       <Footer />
     </div>
