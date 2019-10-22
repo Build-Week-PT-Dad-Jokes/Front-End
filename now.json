@@ -1,5 +1,9 @@
 {
   "builds": [
-    { "src": "**/*", "use": "@now/static" }
-  ]
+    {
+      "src": "package.json",
+      "use": "@now/static-build",
+      "config": { "distDir": "build" }
+    }
+  ],
 }
