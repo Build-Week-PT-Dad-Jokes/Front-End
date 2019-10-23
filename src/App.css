@@ -25,6 +25,13 @@ p {
 h2 {
   font-size: 3.5rem;
 }
+h1,
+h2,
+h3,
+h4 {
+  margin: 0;
+  padding: 0;
+}
 button {
   font-size: 1.6rem;
 }
@@ -60,6 +67,7 @@ span {
   font-size: 2rem;
   width: 4rem;
   height: 4rem;
+  margin-top: 2px;
 }
 .landing-page-header .help-button span {
   font-size: 2.6rem;
@@ -181,24 +189,67 @@ span {
 .main-form .bottom-form .submit-button:hover {
   background-color: #d33030;
 }
+.add-joke-dialog {
+  background-color: #eba15c;
+}
+#form-dialog-title {
+  font-size: 4rem;
+}
 .home-container .jokes-container {
+  margin: 0 10%;
   text-align: left;
   display: flex;
   flex-direction: column;
-  align-items: center;
   padding-bottom: 100px;
+}
+.home-container .jokes-container .add-joke-container {
+  align-self: center;
+}
+.home-container .jokes-container .add-joke-container .add-joke-button {
+  background-color: #e5872f;
+  width: 150px;
+  padding: 5px;
 }
 .home-container .jokes-container .single-joke {
   background: #721616;
-  padding: 5px;
-  margin: 10px;
-  width: 90%;
+  margin: 10px auto;
+  width: 100%;
+  padding: 10px 20px;
+  border-radius: 2px;
 }
 .home-container .jokes-container .single-joke p {
+  font-size: 2.4rem;
   color: #cbcbcb;
 }
 .home-container .jokes-container .single-joke .second-part {
   color: #ff9e44;
+}
+.home-container .jokes-container .single-joke .icon-flex-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.home-container .jokes-container .single-joke .bookmark-button {
+  color: #e5872f;
+  cursor: pointer;
+}
+.home-container .jokes-container .single-joke .share-button {
+  color: #cbcbcb;
+  cursor: pointer;
+  background: rgba(206, 206, 206, 0.5);
+  border-radius: 16px;
+  padding: 5px;
+}
+.home-container .jokes-container .single-joke .share-icons {
+  color: #cbcbcb;
+  display: flex;
+  background: rgba(206, 206, 206, 0.5);
+  border-radius: 16px;
+  padding: 5px;
+}
+.home-container .jokes-container .single-joke .share-icons > * {
+  padding: 0 5px;
+  cursor: pointer;
 }
 .footer {
   position: absolute;
@@ -212,4 +263,47 @@ span {
   margin-right: 10px;
   color: #cbcbcb;
   text-align: right;
+}
+
+.home-header {
+  display: inline-block;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  height: 65px;
+  background: #952121;
+  padding: 10px 0;
+  box-shadow: 0 4px 2px -2px gray;
+}
+
+.logo {
+  transform: scale(0.32);
+  height: 5%;
+  box-shadow: 0 0 10px 0 rgba(182, 102, 28, 0.5);
+}
+
+.search-form {
+  position: relative;
+  left: 36%;
+  margin-top: 6px;
+  width: 100%;
+}
+
+.search-box {
+  font-family: Roboto;
+  font-size: 20px;
+  font-weight: normal;
+  background-color: #AD6D6D;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: #C1AEAE;
+}
+
+.profile-logo {
+  transform: scale(0.07);
+  position: absolute;
+  top: -222px;
+  right: -222px;
 }
