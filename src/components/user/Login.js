@@ -3,9 +3,11 @@ import { withFormik, Form, Field } from "formik";
 import * as Yup from "yup";
 import axios from "axios"
 import {Link} from "react-router-dom"
+import { connect } from 'react-redux';
+import { loginUser } from '../../actions';
 import {showErrors} from "./userUtils"
 import PulseLoader from 'react-spinners/PulseLoader';
-  
+
 
 function LoginForm({ errors, touched, isSubmitting }) {
 
@@ -17,13 +19,13 @@ function LoginForm({ errors, touched, isSubmitting }) {
         </div>
         <div className="above-boxes">
           <span>Username* </span>
-          {showErrors('name',  isSubmitting, touched, errors)}
+          {showErrors('username',  isSubmitting, touched, errors)}
         </div>
         <div>
           <Field 
             className="text-box"
             type="name" 
-            name="name" 
+            name="username" 
           />
         </div>
         <div className="above-boxes">
@@ -65,17 +67,16 @@ function LoginForm({ errors, touched, isSubmitting }) {
 
 const FormikLoginForm = withFormik({
 
-  
-  mapPropsToValues({ name, password }) {
+  mapPropsToValues({ username, password }) {
     return {
-      name: name || "",
+      username: username || "",
       password: password || "",
     };
   },
 
   validationSchema: Yup.object().shape({
     
-    name: Yup.string()
+    username: Yup.string()
       .required("Username is required"),
     password: Yup.string()
       .required("Password is required"),
@@ -83,24 +84,24 @@ const FormikLoginForm = withFormik({
   }),
 
 handleSubmit(values, { resetForm, setSubmitting, setStatus, props }) {
-    const {history} = props
+    const {history, loginUser} = props
 
     //Need to confirm login credentials with a user on server
     axios
-        .post("https://reqres.in/api/users", values)
-        .then(response => {
+        .post("https://dadjokesbw.herokuapp.com/api/auth/login", values)
+        .then(res => {
           resetForm();
           setSubmitting(false);
-          setStatus(response.data)
-        })
-        .then(()=>{
-          history.push('/home')
+          setStatus(res.data);
+          loginUser(res.data);
+          localStorage.setItem("token", res.data.token)
+          history.push('/home');
         })
         .catch(err => {
-          console.log(err); 
+          console.error(err.response); 
           setSubmitting(false);
         });
     }
 })(LoginForm);
 
-export default FormikLoginForm;
+export default connect(null, {loginUser})(FormikLoginForm);
