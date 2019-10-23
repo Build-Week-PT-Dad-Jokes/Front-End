@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from "react"
 import {BookmarkBorder, Bookmark, Share, Facebook, Twitter, ChatBubble} from '@material-ui/icons/';
+import axiosWithAuth from "../utils/axiosWithAuth"
 
 const Joke = ({joke}) => {
     
@@ -13,6 +14,14 @@ const Joke = ({joke}) => {
     }, [])
     const bookmark = event => {
         setIsBookmarked(!isBookmarked)
+        axiosWithAuth()
+            .post(`/favorite-joke/${joke.id}`)
+            .then(response => {
+            console.log(response)
+            })
+            .catch(err => {
+            console.log(err)
+            })
     }
     const share = event => {
         setIsSharing(true)

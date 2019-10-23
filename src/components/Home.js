@@ -6,7 +6,6 @@ const Home = props => {
     return (
         <div className="home-container">
             <Header />
-            <h2>Dad Jokes</h2>
             <JokesList />
         </div>
     )

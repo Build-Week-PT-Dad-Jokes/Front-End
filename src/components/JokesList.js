@@ -24,7 +24,7 @@ const JokesList = props => {
             <h2>Recent Jokes</h2>
             {!!apiJokes && apiJokes.map(joke=>{
                 return (
-                    <div className="single-joke">
+                    <div className="single-joke" key={joke.id}>
                         <Joke joke={joke} />
                     </div>
                 )
