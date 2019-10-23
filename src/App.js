@@ -31,7 +31,7 @@ function App() {
           }
         />
         <Route exact path="/" render={props => <LandingPage {...props} />} />
-        <PrivateRoute exact path="/home" render={props => <Home {...props} />}/>
+        <Route exact path="/home" render={props => <Home {...props} />}/>
         <Route render={() => <Redirect to={{pathname: "/"}} />} />
       </Switch>
       <Footer />
