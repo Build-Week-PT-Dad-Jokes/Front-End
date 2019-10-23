@@ -1,19 +1,20 @@
 import React from 'react';
-import {Route, Redirect, Switch} from "react-router"
+import {Route, Redirect, Switch} from "react-router";
+import PrivateRoute from './utils/PrivateRoute';
 import "./App.css";
 
 //component import
 import FormikAccountForm from './components/user/CreateAccount'
 import FormikLoginForm from './components/user/Login'
-import Header from "./components/Header"
 import Footer from "./components/Footer"
 import LandingPage from './components/LandingPage';
 import Home from "./components/Home"
+import CreateLoginHeader from "./components/CreateLoginHeader";
 
 function App() {
   return (
     <div className="App">
-      <Header />
+      <CreateLoginHeader />
       <Switch>
         <Route 
           exact 

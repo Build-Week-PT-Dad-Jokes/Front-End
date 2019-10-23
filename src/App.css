@@ -67,6 +67,7 @@ span {
   font-size: 2rem;
   width: 4rem;
   height: 4rem;
+  margin-top: 2px;
 }
 .landing-page-header .help-button span {
   font-size: 2.6rem;
@@ -271,4 +272,47 @@ span {
   margin-right: 10px;
   color: #cbcbcb;
   text-align: right;
+}
+
+.home-header {
+  display: inline-block;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  height: 65px;
+  background: #952121;
+  padding: 10px 0;
+  box-shadow: 0 4px 2px -2px gray;
+}
+
+.logo {
+  transform: scale(0.32);
+  height: 5%;
+  box-shadow: 0 0 10px 0 rgba(182, 102, 28, 0.5);
+}
+
+.search-form {
+  position: relative;
+  left: 36%;
+  margin-top: 6px;
+  width: 100%;
+}
+
+.search-box {
+  font-family: Roboto;
+  font-size: 20px;
+  font-weight: normal;
+  background-color: #AD6D6D;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: #C1AEAE;
+}
+
+.profile-logo {
+  transform: scale(0.07);
+  position: absolute;
+  top: -222px;
+  right: -222px;
 }
