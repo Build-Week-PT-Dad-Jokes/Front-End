@@ -23,14 +23,13 @@ function AddJokeModal() {
     setOpen(false);
   };
   const handleChange = event => {
-    const {value, name} = event.target
+    const {name, value} = event.target
     setNewJoke({
       [name]: value
     })
   }
   const handleAdd = e => {
     e.preventDefault()
-    console.log(e.target)
     axiosWithAuth()
       .post("/jokes", newJoke)
         .then(response => {

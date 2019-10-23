@@ -24,7 +24,7 @@ const Joke = ({joke}) => {
             })
     }
     const share = event => {
-        setIsSharing(true)
+        setIsSharing(!isSharing)
     }
     return (
         
@@ -46,6 +46,7 @@ const Joke = ({joke}) => {
                         <div className="twitter"><Twitter fontSize="large"/></div>
                         <div className="facebook"><Facebook fontSize="large"/></div>
                         <div className="chat"><ChatBubble fontSize="large"/></div>
+                        <div onClick={share}> <Share fontSize="large" /></div>
                     </div> }
                 
             </div>
