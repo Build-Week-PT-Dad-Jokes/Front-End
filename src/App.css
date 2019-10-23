@@ -250,6 +250,15 @@ span {
   padding: 0 5px;
   cursor: pointer;
 }
+.home-container .jokes-container .single-joke .share-icons .twitter {
+  color: #55acee;
+}
+.home-container .jokes-container .single-joke .share-icons .facebook {
+  color: #3b5998;
+}
+.home-container .jokes-container .single-joke .share-icons .chat {
+  color: #59bb59;
+}
 .footer {
   position: absolute;
   bottom: 0;

@@ -34,9 +34,9 @@ const Joke = ({joke}) => {
                         <Share fontSize="large"/>
                     </div> :
                     <div className="share-icons">
-                        <div><Twitter fontSize="large"/></div>
-                        <div><Facebook fontSize="large"/></div>
-                        <div><ChatBubble fontSize="large"/></div>
+                        <div className="twitter"><Twitter fontSize="large"/></div>
+                        <div className="facebook"><Facebook fontSize="large"/></div>
+                        <div className="chat"><ChatBubble fontSize="large"/></div>
                     </div> }
                 
             </div>
