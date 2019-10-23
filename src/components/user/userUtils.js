@@ -9,11 +9,11 @@ export const showErrors = (type, submitting, touched, errors) => {
           <span className="error-text">
             {errors[type]}
           </span>
-          <Error className="error-icon" fontSize="medium"/>
+          <Error className="error-icon" fontSize="default"/>
         </div>
       )
     }
     else if(submitting) {
-      return <CheckCircle className="check-icon" fontSize="medium"/>
+      return <CheckCircle className="check-icon" fontSize="default"/>
     }
   }

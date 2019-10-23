@@ -10,7 +10,7 @@ import useMediaQuery from '@material-ui/core/useMediaQuery';
 import axiosWithAuth from "../utils/axiosWithAuth"
 
 function AddJokeModal() {
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = useState(false);
   const [newJoke, setNewJoke]=useState({
     first_line: '',
     punchline: ''
