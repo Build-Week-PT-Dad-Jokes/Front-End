@@ -3,10 +3,21 @@ import { Link } from "react-router-dom";
 import Button from "@material-ui/core/button";
 import { makeStyles } from "@material-ui/core/styles";
 
+const buttonStyles = theme => ({
+  margin: theme.spacing(1),
+  fontSize: "2.4rem",
+  borderRadius: "0.2rem",
+  padding: "1rem"
+});
+
 const useStyles = makeStyles(theme => ({
-  button: {
-    margin: theme.spacing(1),
-    fontSize: "2.4rem"
+  button1: {
+    ...buttonStyles(theme),
+    backgroundColor: "#c92b2b"
+  },
+  button2: {
+    ...buttonStyles(theme),
+    backgroundColor: "#e5872f"
   }
 }));
 
@@ -30,22 +41,16 @@ const LandingPage = props => {
               repudiandae labore rem numquam? Nihil perferendis dolor sed
               tenetur veniam provident perspiciatis pariatur minima.
             </p>
-            <Button
-              className={classes.button}
-              onClick={e => {
-                e.preventDefault();
-                history.push("/signup");
-              }}
-            >
-              Create an Account
-            </Button>
+            <Link to="/signup">
+              <Button className={classes.button1}>Create an Account</Button>
+            </Link>
             <span>
               Already have an account? <Link to="/login">Login</Link>
             </span>
             <span>
-            <Link to="/home">
-            <Button className={classes.button}>Continue As Guest</Button>
-            </Link>
+              <Link to="/home">
+                <Button className={classes.button2}>Continue As Guest</Button>
+              </Link>
             </span>
           </section>
         </div>
