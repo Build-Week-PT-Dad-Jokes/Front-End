@@ -32,6 +32,10 @@ p {
 h2 {
   font-size: 3.5rem;
 }
+h1, h2, h3, h4 {
+  margin :0;
+  padding: 0;
+}
 button {
   font-size: 1.6rem;
 }
@@ -198,24 +202,70 @@ span {
   }
 }
 
+//home page styling
+.add-joke-dialog {
+  background-color: lighten(#e5872f, 10%); 
+}
+#form-dialog-title {
+  font-size: 4rem;
+}
 .home-container {
-
+  
   .jokes-container {
+    margin:0 10%;
     text-align: left;
     display: flex;
     flex-direction: column;
-    align-items: center;
     padding-bottom: 100px;
+    .add-joke-container {
+      align-self: center;
+      .add-joke-button {
+        background-color: #e5872f;
+        width: 150px;
+        padding:5px;
+      }
+      
+    }
     .single-joke {
+      
       background: #721616;
-      padding: 5px;
-      margin: 10px;
-      width: 90%;
+      margin: 10px auto;
+      width: 100%;
+      padding: 10px 20px;
+      border-radius: 2px;
       p {
+        font-size: 2.4rem;
         color: #cbcbcb;
       }
       .second-part {
         color: #ff9e44;
+      }
+      .icon-flex-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      .bookmark-button {
+        color:#e5872f;
+        cursor: pointer;
+      }
+      .share-button {
+        color: #cbcbcb;
+        cursor: pointer;
+        background: rgba(206, 206, 206, 0.5);
+        border-radius: 16px;
+        padding: 5px;
+      }
+      .share-icons {
+        color: #cbcbcb;
+        display: flex;
+        background: rgba(206, 206, 206, 0.5);
+        border-radius: 16px;
+        padding: 5px;
+        &>* {
+          padding: 0 5px;
+          cursor: pointer;
+        }
       }
     }
   }
