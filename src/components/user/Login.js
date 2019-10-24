@@ -4,7 +4,7 @@ import * as Yup from "yup";
 import axios from "axios"
 import {Link} from "react-router-dom"
 import { connect } from 'react-redux';
-import { loginUser } from '../../actions';
+import { setUserWithCreds } from '../../actions';
 import {showErrors} from "./userUtils"
 import PulseLoader from 'react-spinners/PulseLoader';
 
@@ -84,7 +84,7 @@ const FormikLoginForm = withFormik({
   }),
 
 handleSubmit(values, { resetForm, setSubmitting, setStatus, props }) {
-    const {history, loginUser} = props
+    const {history, setUserWithCreds} = props
 
     //Need to confirm login credentials with a user on server
     axios
@@ -93,8 +93,7 @@ handleSubmit(values, { resetForm, setSubmitting, setStatus, props }) {
           resetForm();
           setSubmitting(false);
           setStatus(res.data);
-          loginUser(res.data);
-          localStorage.setItem("token", res.data.token)
+          setUserWithCreds(res.data);
           history.push('/home');
         })
         .catch(err => {
@@ -104,4 +103,4 @@ handleSubmit(values, { resetForm, setSubmitting, setStatus, props }) {
     }
 })(LoginForm);
 
-export default connect(null, {loginUser})(FormikLoginForm);
+export default connect(null, {setUserWithCreds})(FormikLoginForm);
