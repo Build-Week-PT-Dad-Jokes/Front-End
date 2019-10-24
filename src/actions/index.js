@@ -10,6 +10,6 @@ export const setJokes = jokes => ({
   type: SET_JOKES, payload: jokes
 })
 
-export const toggeSearching = searchResponse => ({
+export const toggleSearching = searchResponse => ({
   type: TOGGLE_SEARCHING, payload: searchResponse
 })

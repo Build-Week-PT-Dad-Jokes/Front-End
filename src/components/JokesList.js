@@ -3,6 +3,8 @@ import Joke from "./Joke"
 import axios from "axios"
 import JokeOfDay from "./JokeOfDay"
 import AddJokeModal from "./AddJokeModal"
+import { connect } from 'react-redux';
+import { setJokes, toggleSearching } from '../actions';
 
 const JokesList = props => {
     //placeholder state with test joke objects
@@ -32,4 +34,10 @@ const JokesList = props => {
         </div>
     )
 }
-export default JokesList
+
+const mapStateToProps = ({ jokesReducer: {jokes, isSearching}}) => ({
+    apiJokes: jokes,
+    isSearching: isSearching
+})
+
+export default connect(mapStateToProps, { setJokes, toggleSearching })(JokesList)
