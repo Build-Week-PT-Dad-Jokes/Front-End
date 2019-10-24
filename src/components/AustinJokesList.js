@@ -6,10 +6,10 @@ import "../App.css";
 const apiLink = 'https://dadjokesbw.herokuapp.com/api/jokes';
 export default function AustinJokesList() {
     const [jokes, setJokes] = useState([]);
-
     useEffect(() => {
         axios.get(apiLink).then(res => {
-            setJokes(res.data.results);
+            console.log(res);
+            setJokes(res.data);
         }).catch(e => console.log(e));
     }, []);
 
