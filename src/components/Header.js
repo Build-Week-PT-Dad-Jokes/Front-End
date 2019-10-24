@@ -23,8 +23,7 @@ function Header(props) {
       const filteredJokes2 = apiJokes.filter(ele => 
         !!ele.punchline &&
         ele.punchline.toLowerCase().includes(search.toLowerCase()))
-      const newArray = new Set(filteredJokes.concat(filteredJokes2))
-      // console.log(newArray)
+      const newArray = filteredJokes.concat(filteredJokes2);
       setSearchResponse(newArray)
     }
 

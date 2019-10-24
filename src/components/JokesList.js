@@ -7,7 +7,7 @@ import { connect } from 'react-redux';
 import { setJokes } from '../actions';
 
 const JokesList = props => {
-    const { apiJokes, isSearching, setJokes } = props;
+    const { apiJokes, isSearching, setJokes, searchResponse } = props;
     useEffect(()=>{
         axios 
             .get('https://dadjokesbw.herokuapp.com/api/jokes')
@@ -19,17 +19,22 @@ const JokesList = props => {
     
     return (
         <div className="jokes-container">
-            <h2>Random Joke</h2>
-            {!!apiJokes && <JokeOfDay jokes={apiJokes}/>}
+            {!isSearching && <h2>Random Joke</h2>}
+            {!!apiJokes && !isSearching && <JokeOfDay jokes={apiJokes}/>}
             <AddJokeModal />
-            <h2>Recent Jokes</h2>
-            {!!apiJokes && apiJokes.map(joke=>{
+            {!isSearching ? <h2>Recent Jokes</h2> : <h2>Search Results</h2>}
+            {!!apiJokes && !isSearching && apiJokes.map(joke=>{
                 return (
                     <div className="single-joke">
                         <Joke joke={joke} />
                     </div>
                 )
             })}
+            {!!apiJokes && isSearching && searchResponse.map(joke => (
+                    <div className="single-joke">
+                        <Joke joke={joke} />
+                    </div>
+            ))}
         </div>
     )
 }
