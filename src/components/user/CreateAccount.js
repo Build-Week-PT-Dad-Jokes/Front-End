@@ -6,7 +6,7 @@ import {Link} from "react-router-dom"
 import moment from "moment"
 import PulseLoader from 'react-spinners/PulseLoader';
 import { connect } from 'react-redux';
-import { loginUser } from '../../actions';
+import { setUserWithCreds } from '../../actions';
 import {showErrors} from "./userUtils"
 
 function CreateForm({ status, errors, touched, isSubmitting }) {
@@ -112,7 +112,7 @@ const FormikAccountForm = withFormik({
   }),
 
 handleSubmit(values, { resetForm, setSubmitting, setStatus, props }) {
-  const {history, loginUser} = props
+  const {history, setUserWithCreds} = props
   const currentTime = moment().unix()
   const newUser = {
     username: values.name,
@@ -128,7 +128,7 @@ handleSubmit(values, { resetForm, setSubmitting, setStatus, props }) {
           resetForm();
           setSubmitting(false);
           setStatus(response.data)
-          loginUser(response.data);
+          setUserWithCreds(response.data);
           history.push('/home')
         })
         .catch(err => {
@@ -139,4 +139,4 @@ handleSubmit(values, { resetForm, setSubmitting, setStatus, props }) {
     }
 })(CreateForm);
 
-export default connect(null, { loginUser })(FormikAccountForm);
+export default connect(null, { setUserWithCreds })(FormikAccountForm);

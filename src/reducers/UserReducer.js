@@ -1,4 +1,4 @@
-import { LOGIN_USER } from "../actions";
+import { LOGIN_USER, SET_TOKEN } from "../actions";
 
 const initialState = {
   token: localStorage.getItem("token"),
@@ -16,7 +16,7 @@ export const userReducer = (state = initialState, {type, payload}) => {
   switch (type) {
     case LOGIN_USER:
       return {
-        token: payload.token,
+        ...state,
         user: {
           date_created: payload.user.date_created,
           email: payload.user.email,
@@ -26,6 +26,11 @@ export const userReducer = (state = initialState, {type, payload}) => {
           favorites: payload.user.favorites
         }
       };
+    case SET_TOKEN:
+      return {
+        ...state,
+        token: payload
+      }
     default:
       return state;
   }
