@@ -22,7 +22,8 @@ export const jokesReducer = (state = initialState, {type, payload}) => {
     case SET_IS_SEARCHING:
       return {
         ...state,
-        isSearching: false
+        isSearching: false,
+        searchResponse: null
       }
     default:
       return state;
