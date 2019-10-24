@@ -6,8 +6,9 @@ const initialState = {
     id: null,
     username: "",
     email: "",
-    jokes: [],
-    date_created: ""
+    jokes: null,
+    date_created: "",
+    favorites: null,
   }
 };
 
@@ -15,15 +16,14 @@ export const userReducer = (state = initialState, {type, payload}) => {
   switch (type) {
     case LOGIN_USER:
       return {
-        ...state,
         token: payload.token,
         user: {
-          ...state.user,
           date_created: payload.user.date_created,
           email: payload.user.email,
           id: payload.user.id,
           jokes: payload.user.jokes,
           username: payload.user.username,
+          favorites: payload.user.favorites
         }
       };
     default:
