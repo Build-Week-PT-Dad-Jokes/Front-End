@@ -37,30 +37,42 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  width: 90%;
+  width: 100%;
   margin: 0 auto;
-}
+  padding-top: 5rem;
+  
+  
+  .carousel {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgba(132, 132, 132, 0.15);
 
-.carousel {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  .left-button,
-  .right-button {
-    font-size: 2.5rem;
-    cursor: pointer;
+    .left-button,
+    .right-button {
+      font-size: 2.5rem;
+      cursor: pointer;
+    }
+    .left-button {
+      padding-right: 2rem;
+    }
+  
+    .right-button {
+      padding-left: 2rem;
+    }
   }
-  .left-button {
-    padding-right: 2rem;
-  }
+  
+  .landing-page.container {
+    display: flex;
+    flex-direction: column;
+    width: 60%;
+    padding-top: 5rem;
+    justify-content: center;
+    margin: 0 auto;
 
-  .right-button {
-    padding-left: 2rem;
+    .landing-page.tagline {
+      font-size: 3.6rem;
+      color: #cbcbcb;
+    }
   }
-}
-
-.landing-page.container {
-  display: flex;
-  flex-direction: column;
 }

@@ -241,26 +241,36 @@ span {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  width: 90%;
+  width: 100%;
   margin: 0 auto;
+  padding-top: 5rem;
 }
-.carousel {
+.landing-page.content .carousel {
   display: flex;
   justify-content: center;
   align-items: center;
+  background: rgba(132, 132, 132, 0.15);
 }
-.carousel .left-button,
-.carousel .right-button {
+.landing-page.content .carousel .left-button,
+.landing-page.content .carousel .right-button {
   font-size: 2.5rem;
   cursor: pointer;
 }
-.carousel .left-button {
+.landing-page.content .carousel .left-button {
   padding-right: 2rem;
 }
-.carousel .right-button {
+.landing-page.content .carousel .right-button {
   padding-left: 2rem;
 }
-.landing-page.container {
+.landing-page.content .landing-page.container {
   display: flex;
   flex-direction: column;
+  width: 60%;
+  padding-top: 5rem;
+  justify-content: center;
+  margin: 0 auto;
+}
+.landing-page.content .landing-page.container .landing-page.tagline {
+  font-size: 3.6rem;
+  color: #cbcbcb;
 }

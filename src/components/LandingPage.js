@@ -40,7 +40,7 @@ const LandingPage = props => {
           <span className="right-button">{">>"}</span>
         </div>
         <div className="landing-page container">
-          <p className="joke"></p>
+          <p className="landing-page tagline">You're a funny guy, but you keep losing your list of jokes and forgetting which ones had the best reactions! Well worry no more- Dad (or bad??) jokes app to the rescue.</p>
           <Link to="/signup">
             <Button className={classes.button1}>Create an Account</Button>
           </Link>
