@@ -4,16 +4,15 @@ import axios from "axios"
 import JokeOfDay from "./JokeOfDay"
 import AddJokeModal from "./AddJokeModal"
 import { connect } from 'react-redux';
-import { setJokes, toggleSearching } from '../actions';
+import { setJokes } from '../actions';
 
 const JokesList = props => {
-    //placeholder state with test joke objects
-    const [apiJokes, setApiJokes] = useState()
+    const { apiJokes, isSearching, setJokes } = props;
     useEffect(()=>{
         axios 
             .get('https://dadjokesbw.herokuapp.com/api/jokes')
             .then(resp => {
-                setApiJokes(resp.data)
+                setJokes(resp.data)
             })
             .catch(err=> console.log(err))
     }, [])
@@ -35,9 +34,10 @@ const JokesList = props => {
     )
 }
 
-const mapStateToProps = ({ jokesReducer: {jokes, isSearching}}) => ({
+const mapStateToProps = ({ jokesReducer: {jokes, isSearching, searchResponse }}) => ({
     apiJokes: jokes,
-    isSearching: isSearching
+    isSearching,
+    searchResponse
 })
 
-export default connect(mapStateToProps, { setJokes, toggleSearching })(JokesList)
+export default connect(mapStateToProps, { setJokes })(JokesList)

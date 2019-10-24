@@ -1,7 +1,7 @@
 import {  SET_JOKES, TOGGLE_SEARCHING } from '../actions'
 
 const initialState = {
-  jokes:[],
+  jokes: null,
   isSearching: false,
   searchResponse: null
 }
