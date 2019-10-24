@@ -194,6 +194,11 @@ span {
 #form-dialog-title {
   font-size: 4rem;
 }
+.bottom-joke-modal {
+  display: flex;
+  justify-content: space-between;
+  margin-left: 5%;
+}
 .home-container .jokes-container {
   margin: 0 10%;
   text-align: left;

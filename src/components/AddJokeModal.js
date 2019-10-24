@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import Dialog from '@material-ui/core/Dialog';
@@ -8,13 +8,26 @@ import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 import axiosWithAuth from "../utils/axiosWithAuth"
+import Switch from '@material-ui/core/Switch';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
 
 function AddJokeModal() {
+  const [checkedPrivate, setCheckedPrivate]=useState(false)
   const [open, setOpen] = useState(false);
   const [newJoke, setNewJoke]=useState({
     first_line: '',
-    punchline: ''
+    punchline: '',
+    private: ''
   })
+
+  useEffect(()=> {
+    console.log('changing private state' + checkedPrivate)
+    setNewJoke({
+      ...newJoke,
+      private: checkedPrivate ? '1' : '0'
+    })
+  }, [checkedPrivate])
+  
   const handleClickOpen = () => {
     setOpen(true);
   };
@@ -25,6 +38,7 @@ function AddJokeModal() {
   const handleChange = event => {
     const {name, value} = event.target
     setNewJoke({
+      ...newJoke,
       [name]: value
     })
   }
@@ -34,6 +48,7 @@ function AddJokeModal() {
       .post("/jokes", newJoke)
         .then(response => {
           console.log(response)
+          handleClose()
         })
         .catch(err => {
           console.log(err)
@@ -94,14 +109,23 @@ function AddJokeModal() {
               name="punchline"
             />
           </DialogContent>
-          <DialogActions>
-            <Button onClick={handleClose}>
-              Cancel
-            </Button>
-            <Button type="submit">
-              Add Joke
-            </Button>
-          </DialogActions>
+          <div className="bottom-joke-modal">
+            <FormControlLabel
+              control={
+                <Switch checked={checkedPrivate} onChange={()=>setCheckedPrivate(!checkedPrivate)} value="privateToggle" />
+              }
+              label="Set as Private"
+            />
+            <DialogActions>
+              <Button onClick={handleClose}>
+                Cancel
+              </Button>
+              <Button type="submit">
+                Add Joke
+              </Button>
+            </DialogActions>
+          </div>
+         
         </form>
       </Dialog>
     </div>

@@ -34,28 +34,27 @@ const JokesList = props => {
             )
         }
     }
-    const returnJoke = (joke)=> {
-        return (
+    const returnJoke = (joke, ind)=> {
+        return ind<10 &&
             <div className="single-joke" key={joke.id}>
                 <Joke joke={joke} />
             </div>
-        )
     }
     const getJokeContent = () => {
         
         if(sortBy==='mostPopular'){
-            !!apiJokes && apiJokes.map(joke=>{
-                return returnJoke(joke)
+            return !!apiJokes && apiJokes.map((joke,ind)=>{
+                return returnJoke(joke, ind)
             })
         }
         if(sortBy==='mostRecent' || sortBy==='default'){
-            !!apiJokes && apiJokes.map(joke=>{
-                return returnJoke(joke)
+            return !!apiJokes && apiJokes.map((joke,ind)=>{
+                return returnJoke(joke, ind)
             })
         }
         if(sortBy==='topRated'){
-            !!apiJokes && apiJokes.sortBy('rating').map(joke=>{
-                return returnJoke(joke)
+            return !!apiJokes && apiJokes.map((joke,ind)=>{
+                return returnJoke(joke, ind)
             })
         }
     }
@@ -85,10 +84,16 @@ const JokesList = props => {
                     <option value="topRated">Top Rated</option>
                 </select> 
             </div>
-            {/* {getJokeContent()} */}
-            {!!apiJokes && apiJokes.map(joke=>{
-                    return returnJoke(joke)
-            })}
+            {getJokeContent()}
+            {/* <MostRecentJokes apiJokes={apiJokes}/>
+            <TopRated apiJokes={apiJokes}/>
+            <MostPopular apiJokes={apiJokes}/> */}
+            {/* {!!apiJokes && apiJokes.map((joke,ind)=>{
+                return ind<10 &&
+                    <div className="single-joke" key={joke.id}>
+                        <Joke joke={joke} />
+                    </div>
+            })} */}
         </div>
     )
 }

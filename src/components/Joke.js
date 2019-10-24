@@ -6,22 +6,37 @@ const Joke = ({joke}) => {
     
     const [isBookmarked, setIsBookmarked] = useState(false)
     const [isSharing, setIsSharing] = useState(false)
+    const [favoriteId, setFavoriteId] = useState()
 
     useEffect(()=> {
-        window.addEventListener('click', e=> {
-            // if(setIsSharing) setIsSharing(false)
-        })
-    }, [])
+        updateFavorites()
+    },[isBookmarked])
+
     const bookmark = event => {
         setIsBookmarked(!isBookmarked)
-        axiosWithAuth()
+    }
+    const updateFavorites = ()=> {
+        if(isBookmarked) {
+            axiosWithAuth()
             .post(`/favorite-joke/${joke.id}`)
             .then(response => {
-            console.log(response)
+                console.log(response)
+                setFavoriteId(response.data.favoritedJoke.id)
             })
             .catch(err => {
-            console.log(err)
+                console.log(err)
             })
+        }  
+        else if(!!favoriteId){
+            axiosWithAuth()
+            .delete(`/favorite-joke/${favoriteId}`)
+            .then(response => {
+                console.log(response)
+            })
+            .catch(err => {
+                console.log(err)
+            })
+        }
     }
     const share = event => {
         setIsSharing(!isSharing)
