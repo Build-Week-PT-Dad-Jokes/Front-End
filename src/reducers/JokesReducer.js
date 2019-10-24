@@ -1,4 +1,4 @@
-import {  SET_JOKES, TOGGLE_SEARCHING } from '../actions'
+import {  SET_JOKES, SEARCH_RESPONSE, SET_IS_SEARCHING } from '../actions'
 
 const initialState = {
   jokes: null,
@@ -13,10 +13,16 @@ export const jokesReducer = (state = initialState, {type, payload}) => {
         ...state,
         jokes: payload
       }
-    case TOGGLE_SEARCHING:
+    case SEARCH_RESPONSE:
       return {
         ...state,
-        isSearching: !state.isSearching
+        searchResponse: payload,
+        isSearching: true
+      }
+    case SET_IS_SEARCHING:
+      return {
+        ...state,
+        isSearching: false
       }
     default:
       return state;
