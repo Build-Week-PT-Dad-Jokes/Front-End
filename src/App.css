@@ -237,30 +237,30 @@ span {
 .landing-page-header .help-button span {
   font-size: 2.6rem;
 }
-.landing-page {
+.landing-page.content {
   display: flex;
   flex-direction: column;
   justify-content: center;
   width: 90%;
   margin: 0 auto;
 }
-.carousel .carousel-header {
+.carousel {
   display: flex;
   justify-content: center;
   align-items: center;
 }
-.carousel .carousel-header .left-button,
-.carousel .carousel-header .right-button {
+.carousel .left-button,
+.carousel .right-button {
   font-size: 2.5rem;
   cursor: pointer;
 }
-.carousel .carousel-header .left-button {
+.carousel .left-button {
   padding-right: 2rem;
 }
-.carousel .carousel-header .right-button {
+.carousel .right-button {
   padding-left: 2rem;
 }
-.carousel .container {
+.landing-page.container {
   display: flex;
   flex-direction: column;
 }

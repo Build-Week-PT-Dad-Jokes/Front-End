@@ -33,7 +33,7 @@
   }
 }
 
-.landing-page {
+.landing-page.content {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -42,27 +42,25 @@
 }
 
 .carousel {
-  .carousel-header {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
-    .left-button,
-    .right-button {
-      font-size: 2.5rem;
-      cursor: pointer;
-    }
-    .left-button {
-      padding-right: 2rem;
-    }
-
-    .right-button {
-      padding-left: 2rem;
-    }
+  .left-button,
+  .right-button {
+    font-size: 2.5rem;
+    cursor: pointer;
+  }
+  .left-button {
+    padding-right: 2rem;
   }
 
-  .container {
-    display: flex;
-    flex-direction: column;
+  .right-button {
+    padding-left: 2rem;
   }
+}
+
+.landing-page.container {
+  display: flex;
+  flex-direction: column;
 }

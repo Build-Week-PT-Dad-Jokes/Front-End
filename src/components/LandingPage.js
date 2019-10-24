@@ -23,36 +23,35 @@ const useStyles = makeStyles(theme => ({
 
 const LandingPage = props => {
   const classes = useStyles();
-  const { history } = props;
 
   return (
     <div className="wrapper">
-      <div className="landing-page">
+      <div className="landing-page content">
         <div className="carousel">
-          <header className="carousel-header">
-            <span className="left-button">{"<<"}</span>
-            <h2>Sample Dad Joke Carousel</h2>
-            <span className="right-button">{">>"}</span>
-          </header>
-          <section className="container">
-            <p className="joke">
-              Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-              Explicabo ipsum repellat minus repellendus id illum itaque
-              repudiandae labore rem numquam? Nihil perferendis dolor sed
-              tenetur veniam provident perspiciatis pariatur minima.
-            </p>
-            <Link to="/signup">
-              <Button className={classes.button1}>Create an Account</Button>
+          <span className="left-button">{"<<"}</span>
+          <div className="landing-page joke">
+            <h2 className="landing-page joke-setup">
+              What concert costs just 45 cents?
+            </h2>
+            <h2 className="landing-page joke-delivery">
+              50 Cent featuring Nickelback!
+            </h2>
+          </div>
+          <span className="right-button">{">>"}</span>
+        </div>
+        <div className="landing-page container">
+          <p className="joke"></p>
+          <Link to="/signup">
+            <Button className={classes.button1}>Create an Account</Button>
+          </Link>
+          <span>
+            Already have an account? <Link to="/login">Login</Link>
+          </span>
+          <span>
+            <Link to="/home">
+              <Button className={classes.button2}>Continue As Guest</Button>
             </Link>
-            <span>
-              Already have an account? <Link to="/login">Login</Link>
-            </span>
-            <span>
-              <Link to="/home">
-                <Button className={classes.button2}>Continue As Guest</Button>
-              </Link>
-            </span>
-          </section>
+          </span>
         </div>
       </div>
     </div>
