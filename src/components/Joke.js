@@ -9,13 +9,13 @@ const Joke = ({joke}) => {
     const [favoriteId, setFavoriteId] = useState()
 
     useEffect(()=> {
-        updateFavorites()
+        updateFavorite()
     },[isBookmarked])
 
     const bookmark = event => {
         setIsBookmarked(!isBookmarked)
     }
-    const updateFavorites = ()=> {
+    const updateFavorite = ()=> {
         if(isBookmarked) {
             axiosWithAuth()
             .post(`/favorite-joke/${joke.id}`)

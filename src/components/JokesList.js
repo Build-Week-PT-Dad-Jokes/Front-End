@@ -15,6 +15,7 @@ const JokesList = props => {
                 setApiJokes(resp.data)
             })
             .catch(err=> console.log(err))
+            
     }, [])
 
     const getPageTitle = ()=> {
@@ -84,6 +85,7 @@ const JokesList = props => {
                     <option value="topRated">Top Rated</option>
                 </select> 
             </div>
+            {/* {console.log(apiJokes)} */}
             {getJokeContent()}
             {/* <MostRecentJokes apiJokes={apiJokes}/>
             <TopRated apiJokes={apiJokes}/>

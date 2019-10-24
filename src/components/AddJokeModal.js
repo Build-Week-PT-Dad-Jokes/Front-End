@@ -21,13 +21,12 @@ function AddJokeModal() {
   })
 
   useEffect(()=> {
-    console.log('changing private state' + checkedPrivate)
     setNewJoke({
       ...newJoke,
       private: checkedPrivate ? '1' : '0'
     })
   }, [checkedPrivate])
-  
+
   const handleClickOpen = () => {
     setOpen(true);
   };
