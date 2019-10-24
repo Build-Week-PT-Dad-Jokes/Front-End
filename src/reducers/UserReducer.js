@@ -18,12 +18,12 @@ export const userReducer = (state = initialState, {type, payload}) => {
       return {
         ...state,
         user: {
-          date_created: payload.user.date_created,
-          email: payload.user.email,
-          id: payload.user.id,
-          jokes: payload.user.jokes,
-          username: payload.user.username,
-          favorites: payload.user.favorites
+          date_created: payload.date_created,
+          email: payload.email,
+          id: payload.id,
+          jokes: payload.jokes,
+          username: payload.username,
+          favorites: payload.favorite_jokes
         }
       };
     case SET_TOKEN:

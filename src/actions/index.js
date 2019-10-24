@@ -10,12 +10,13 @@ export const SET_IS_SEARCHING = "SET_IS_SEARCHING";
 export const setUserWithCreds = creds => {
   localStorage.setItem("token", creds.token);
   localStorage.setItem("userID", creds.user.id);
-  loginUser(creds)
+  loginUser(creds.user)
   return { type: SET_TOKEN, payload: creds.token };
 };
 
-export const loginUser = creds => {
-  return { type: LOGIN_USER, payload: creds };
+export const loginUser = user => {
+  console.log(user)
+  return { type: LOGIN_USER, payload: user };
 };
 
 // Jokes Actions
