@@ -17,7 +17,7 @@ const Joke = props => {
   const [isBookmarked, setIsBookmarked] = useState(false);
   const [isSharing, setIsSharing] = useState(false);
   const [favoriteId, setFavoriteId] = useState();
-  const [inMyJokes, setInMyJokes] = useState(false);
+  const [inMyJokes, setInMyJokes] = useState(true);
 
 //   if (match.params !== "/myjokes") {
 //     setInMyJokes(false);
@@ -64,7 +64,7 @@ const Joke = props => {
         ) : (
           <>
             <UpdateJoke />
-            <DeleteJoke />
+            <DeleteJoke jokeID={joke.id}/>
           </>
         )}
       </div>
