@@ -4,6 +4,7 @@ import logo from '../img/logo.png';
 import user from '../img/user.png';
 import SearchForm from './SearchForm';
 import axios from 'axios';
+import ProfileButton from './ProfileButton';
 
 function Header(props) {
 
@@ -57,9 +58,7 @@ function Header(props) {
           </Link>
         )
       })}
-    <div className="profile-logo">
-        <img src={user}/>
-      </div>
+    <ProfileButton />
     </header>
   );
 }

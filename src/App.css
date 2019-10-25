@@ -211,6 +211,7 @@ span {
   background-color: #e5872f;
   width: 150px;
   padding: 5px;
+  font-weight: bold;
 }
 .home-container .jokes-container .single-joke {
   background: #721616;
@@ -290,11 +291,7 @@ span {
 .search-box {
   font-family: 'Roboto';
   font-size: 20px;
-  font-weight: normal;
-  font-stretch: normal;
-  font-style: normal;
-  line-height: normal;
-  letter-spacing: normal;
+  color: #CBCBCB;
   background: url(./img/magnifying-glass-vector-29.png) left 5px no-repeat;
   background-size: 13px;
   background-color: #AD6D6D;
@@ -302,10 +299,16 @@ span {
   padding-left: 23px;
   width: 60%;
 }
+.search-box.search-box::placeholder {
+  color: #CBCBCB;
+}
 .profile-logo {
   transform: scale(0.07);
   position: absolute;
   top: -225px;
   right: -225px;
   box-shadow: 0 4px 2px -2px gray;
+}
+.simple-popover {
+  background-color: #FF9E44;
 }
