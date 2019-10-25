@@ -1,3 +1,88 @@
+.wrapper {
+  background-image: linear-gradient(to bottom, #401414, rgba(63, 20, 20, 0.99), rgba(0, 0, 0, 0));
+  background-color: rgba(53, 53, 53, 0.65);
+  width: 100%;
+  height: 100vh;
+}
+.landing-page-header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: left;
+  padding: 1rem 0;
+  width: 90%;
+  margin: 0 auto;
+}
+.landing-page-header .help-button {
+  margin-left: 10px;
+  color: #cbcbcb;
+  cursor: pointer;
+  padding: 0.6rem;
+  border-radius: 50%;
+  text-align: center;
+  vertical-align: middle;
+  background: rgba(125, 125, 125, 0.6);
+  font-size: 2rem;
+  width: 4rem;
+  height: 4rem;
+}
+.landing-page-header .help-button span {
+  font-size: 2.6rem;
+}
+.landing-page.content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+  margin: 0 auto;
+  padding-top: 6.5rem;
+}
+.landing-page.content .carousel {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgba(132, 132, 132, 0.15);
+}
+.landing-page.content .carousel .left-button,
+.landing-page.content .carousel .right-button {
+  font-size: 4.8rem;
+  cursor: pointer;
+  position: absolute;
+  color: "#cbcbcb";
+  justify-content: center;
+}
+.landing-page.content .carousel .left-button {
+  padding-right: 2rem;
+  left: 5rem;
+}
+.landing-page.content .carousel .right-button {
+  padding-left: 2rem;
+  right: 5rem;
+}
+.landing-page.content .carousel .landing-page.joke {
+  justify-content: left;
+}
+.landing-page.content .carousel .landing-page.joke .joke-setup {
+  color: #cbcbcb;
+  font-size: 4.8rem;
+}
+.landing-page.content .carousel .landing-page.joke .joke-delivery {
+  color: #e5872f;
+  font-size: 4.8rem;
+}
+.landing-page.content .landing-page.container {
+  display: flex;
+  flex-direction: column;
+  width: 60%;
+  padding-top: 5rem;
+  justify-content: center;
+  margin: 0 auto;
+}
+.landing-page.content .landing-page.container .landing-page.tagline {
+  font-size: 3.6rem;
+  color: #cbcbcb;
+}
 * {
   box-sizing: border-box;
 }
