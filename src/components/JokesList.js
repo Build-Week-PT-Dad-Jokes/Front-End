@@ -23,17 +23,17 @@ const JokesList = props => {
     const getPageTitle = ()=> {
         if(sortBy==='mostPopular'){
             return(
-                <h2>Most Popular</h2>
+                !isSearching ? <h2>Most Recent</h2> : <h2>Search Results</h2>
             )
         }
         if(sortBy==='mostRecent' || sortBy==='default'){
             return(
-                <h2>Most Recent</h2>
+                !isSearching ? <h2>Most Recent</h2> : <h2>Search Results</h2>
             )
         }
         if(sortBy==='topRated'){
             return(
-                <h2>Top Rated</h2>
+                !isSearching ? <h2>Most Recent</h2> : <h2>Search Results</h2>
             )
         }
     }
@@ -87,7 +87,7 @@ const JokesList = props => {
                     <option value="topRated">Top Rated</option>
                 </select> 
             </div>
-            {!isSearching ? <h2>Recent Jokes</h2> : <h2>Search Results</h2>}
+            
             {!isSearching && getJokeContent()}
             {!!apiJokes && isSearching && searchResponse.map((joke,ind) => (
                 returnJoke(joke, ind)

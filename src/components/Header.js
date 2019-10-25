@@ -3,8 +3,10 @@ import { Link } from "react-router-dom";
 import logo from '../img/logo.png';
 import user from '../img/user.png';
 import SearchForm from './SearchForm';
+import axios from 'axios';
+import ProfileButton from './ProfileButton';
 import { connect } from 'react-redux';
-import { setSearchResponse, endSearch } from '../actions';
+import {setSearchResponse, endSearch} from "../actions"
 
 function Header(props) {
   const { apiJokes, endSearch, setSearchResponse } = props;
@@ -54,9 +56,7 @@ function Header(props) {
           </Link>
         )
       })}
-    <div className="profile-logo">
-        <img src={user}/>
-      </div>
+    <ProfileButton />
     </header>
   );
 }

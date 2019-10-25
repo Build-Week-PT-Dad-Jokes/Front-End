@@ -1,7 +1,6 @@
+
 import React, { useState, useEffect } from "react";
 import {
-  BookmarkBorder,
-  Bookmark,
   Share,
   Facebook,
   Twitter,
@@ -11,10 +10,12 @@ import axiosWithAuth from "../utils/axiosWithAuth";
 import BookmarkButton from "./BookmarkButton";
 import UpdateJoke from "./UpdateJoke";
 import DeleteJoke from "./DeleteJoke";
+import { connect } from 'react-redux';
+import { loginUser } from '../actions';
 
 const Joke = props => {
-  const { joke, match } = props;
-  const [isBookmarked, setIsBookmarked] = useState(false);
+  const { joke, match, inheritBookmark = false, token, loginUser } = props;
+  const [isBookmarked, setIsBookmarked] = useState(inheritBookmark);
   const [isSharing, setIsSharing] = useState(false);
   const [favoriteId, setFavoriteId] = useState();
   const [inMyJokes, setInMyJokes] = useState(false);
@@ -35,7 +36,6 @@ const Joke = props => {
       axiosWithAuth()
         .post(`/favorite-joke/${joke.id}`)
         .then(response => {
-          console.log(response);
           setFavoriteId(response.data.favoritedJoke.id);
         })
         .catch(err => {
@@ -97,4 +97,8 @@ const Joke = props => {
   );
 };
 
-export default Joke;
+const mapStateToProps = state => ({
+    token: state.userReducer.token,
+  })
+  
+export default connect(mapStateToProps, {loginUser})(Joke);

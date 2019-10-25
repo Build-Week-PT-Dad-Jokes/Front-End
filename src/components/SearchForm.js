@@ -11,7 +11,7 @@ export default function SearchForm(props) {
           name="search"
           value={props.search}
           onChange={props.handleChange}
-          placeholder= " Search"
+          placeholder= " Search" 
       />
      </form>
     </div>

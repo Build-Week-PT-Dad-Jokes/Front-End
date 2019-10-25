@@ -42,8 +42,8 @@ function App(props) {
         />
         <Route exact path="/" render={props => <LandingPage {...props} />} />
         <Route exact path="/home" render={props => <Home {...props} />}/>
-        <Route path="/favorites/:id" render={props=> <FavoritesPage {...props} />}/>
         <PrivateRoute path="/myjokes" render={props => <MyJokes {...props} />} />
+        <PrivateRoute exact path="/favorites" component={FavoritesPage}/>
         <Route render={() => <Redirect to={{pathname: "/"}} />} />
       </Switch>
       <Footer />
