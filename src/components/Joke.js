@@ -62,10 +62,10 @@ const Joke = props => {
         {!inMyJokes ? (
           <BookmarkButton bookmark={bookmark} isBookmarked={isBookmarked} />
         ) : (
-          <>
+          <div className="edit-joke-buttons" style={{ display: "flex"}}>
             <UpdateJoke joke={joke} />
             <DeleteJoke jokeID={joke.id} />
-          </>
+          </div>
         )}
       </div>
       <p className="second-part">{!!joke.punchline && joke.punchline}</p>
