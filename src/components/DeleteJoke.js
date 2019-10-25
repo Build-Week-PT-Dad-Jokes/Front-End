@@ -15,14 +15,16 @@ const DeleteJoke = props => {
           .get(`/users/${id}`)
           .then(res => {
             loginUser(res.data);
-            alert('This joke has successfully been deleted.')
+            alert("This joke has successfully been deleted.");
           })
           .catch(err => console.error(err.response));
       })
-      .catch(err => console.error(err.response))
+      .catch(err => console.error(err.response));
   };
 
-  return <DeleteIcon onClick={() => deleteJoke(jokeID)} />;
+  return (
+    <DeleteIcon onClick={() => deleteJoke(jokeID)} style={{ color: "red", fontSize: "2.4rem" }} />
+  );
 };
 
 export default connect(
