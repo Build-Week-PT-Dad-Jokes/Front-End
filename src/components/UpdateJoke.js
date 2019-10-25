@@ -64,7 +64,12 @@ function UpdateJoke(props) {
 
   return (
     <div className="add-joke-container">
-      <EditIcon onClick={handleClickOpen}>Update Joke</EditIcon>
+      <EditIcon
+        onClick={handleClickOpen}
+        style={{ color: "#e5872f", fontSize: "2.4rem" }}
+      >
+        Update Joke
+      </EditIcon>
       <Dialog
         PaperProps={{
           style: {

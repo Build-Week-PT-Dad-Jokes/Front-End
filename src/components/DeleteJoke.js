@@ -20,7 +20,7 @@ const DeleteJoke = props => {
   return (
     <DeleteIcon
       onClick={() => deleteJoke(jokeID)}
-      style={{ color: "red", fontSize: "2.4rem" }}
+      style={{ color: "#c92b2b", fontSize: "2.4rem" }}
     />
   );
 };
