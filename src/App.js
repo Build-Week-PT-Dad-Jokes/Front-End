@@ -1,6 +1,9 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import {Route, Redirect, Switch} from "react-router";
+import axiosWithAuth from './utils/axiosWithAuth';
+import { connect } from 'react-redux';
 import PrivateRoute from './utils/PrivateRoute';
+import { loginUser } from './actions';
 import "./App.css";
 
 //component import
@@ -10,8 +13,20 @@ import Footer from "./components/Footer"
 import LandingPage from './components/LandingPage';
 import Home from "./components/Home"
 import CreateLoginHeader from "./components/CreateLoginHeader";
+import FavoritesPage from "./components/FavoritesPage"
 
-function App() {
+function App(props) {
+  const { token, loginUser } = props;
+  const id = localStorage.getItem("userID")
+  useEffect(() => {
+    axiosWithAuth()
+      .get(`https://dadjokesbw.herokuapp.com/api/users/${id}`)
+      .then(res => {
+        loginUser(res.data);
+      })
+      .catch(err => console.error(err.response))
+  }, [token])
+
   return (
     <div className="App">
       <CreateLoginHeader />
@@ -31,7 +46,8 @@ function App() {
           }
         />
         <Route exact path="/" render={props => <LandingPage {...props} />} />
-        <PrivateRoute exact path="/home" render={props => <Home {...props} />}/>
+        <Route exact path="/home" render={props => <Home {...props} />}/>
+        <Route path="/favorites/:id" render={props=> <FavoritesPage {...props} />}/>
         <Route render={() => <Redirect to={{pathname: "/"}} />} />
       </Switch>
       <Footer />
@@ -39,4 +55,8 @@ function App() {
   );
 }
 
-export default App;
+const mapStateToProps = state => ({
+  token: state.userReducer.token,
+})
+
+export default connect(mapStateToProps, {loginUser})(App);

@@ -3,36 +3,37 @@ import { Link } from "react-router-dom";
 import logo from '../img/logo.png';
 import user from '../img/user.png';
 import SearchForm from './SearchForm';
+<<<<<<< HEAD
 import axios from 'axios';
 import ProfileButton from './ProfileButton';
+=======
+import { connect } from 'react-redux';
+import { setSearchResponse, endSearch } from '../actions';
+>>>>>>> f412cfd8970842a29d3f0749893a25118138a5ee
 
 function Header(props) {
-
-  const [apiJokes, setApiJokes] = useState()
+  const { apiJokes, endSearch, setSearchResponse } = props;
   const [search, setSearch] = useState('')
 
-  useEffect(()=>{
-    axios 
-        .get('https://dadjokesbw.herokuapp.com/api/jokes')
-        .then(resp => {
-            setApiJokes(resp.data)
-        })
-        .catch(err=> console.log(err))
-}, [])
-
   const handleChange = event=> {
-    const {value} = event.target
-    setSearch(value)
-    const filteredJokes = apiJokes.filter(ele => 
-      !!ele.first_line &&
-      ele.first_line.toLowerCase().includes(search.toLowerCase()))
-    const filteredJokes2 = apiJokes.filter(ele => 
-      !!ele.punchline &&
-      ele.punchline.toLowerCase().includes(search.toLowerCase()))
-    const newArray = new Set(filteredJokes.concat(filteredJokes2))
-    console.log(newArray)
+    const {value} = event.target;
+    setSearch(value);
     
+    if (search.length < 2) {
+      endSearch();
+    } else {
+      const filteredJokes = apiJokes.filter(ele => 
+        !!ele.first_line &&
+        ele.first_line.toLowerCase().includes(search.toLowerCase()))
+      const filteredJokes2 = apiJokes.filter(ele => 
+        !!ele.punchline &&
+        ele.punchline.toLowerCase().includes(search.toLowerCase()))
+      const newArray = filteredJokes.concat(filteredJokes2);
+      setSearchResponse(newArray)
+    }
+
   }
+
   const handleSubmit = event=>{
     event.preventDefault()
   }
@@ -63,4 +64,8 @@ function Header(props) {
   );
 }
 
-export default Header;
+const mapStateToProps = ({ jokesReducer: { jokes } }) => ({
+  apiJokes: jokes
+})
+
+export default connect(mapStateToProps, { setSearchResponse, endSearch })(Header);
