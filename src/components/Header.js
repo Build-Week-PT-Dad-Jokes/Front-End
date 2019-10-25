@@ -5,6 +5,8 @@ import user from '../img/user.png';
 import SearchForm from './SearchForm';
 import axios from 'axios';
 import ProfileButton from './ProfileButton';
+import { connect } from 'react-redux';
+import {setSearchResponse, endSearch} from "../actions"
 
 function Header(props) {
   const { apiJokes, endSearch, setSearchResponse } = props;
