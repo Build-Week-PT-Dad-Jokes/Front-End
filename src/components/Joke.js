@@ -9,13 +9,19 @@ import {
 } from "@material-ui/icons/";
 import axiosWithAuth from "../utils/axiosWithAuth";
 import BookmarkButton from "./BookmarkButton";
+import UpdateJoke from './UpdateJoke';
+import DeleteJoke from './DeleteJoke';
 
-
-
-const Joke = ({ joke }) => {
+const Joke = props => {
+  const { joke, match } = props;
   const [isBookmarked, setIsBookmarked] = useState(false);
   const [isSharing, setIsSharing] = useState(false);
   const [favoriteId, setFavoriteId] = useState();
+  const [inMyJokes, setInMyJokes] = useState(false);
+
+//   if (match.params !== "/myjokes") {
+//     setInMyJokes(false);
+//   }
 
   useEffect(() => {
     updateFavorite();
@@ -53,7 +59,14 @@ const Joke = ({ joke }) => {
     <div className="joke-card">
       <div className="icon-flex-container">
         <p>{!!joke.first_line && joke.first_line}</p>
-        <BookmarkButton bookmark={bookmark} isBookmarked={isBookmarked} />
+        {!inMyJokes ? (
+          <BookmarkButton bookmark={bookmark} isBookmarked={isBookmarked} />
+        ) : (
+          <>
+            <UpdateJoke />
+            <DeleteJoke />
+          </>
+        )}
       </div>
       <p className="second-part">{!!joke.punchline && joke.punchline}</p>
       <div className="icon-flex-container">
