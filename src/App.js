@@ -17,7 +17,8 @@ import FavoritesPage from "./components/FavoritesPage"
 import MyJokes from './components/MyJokes';
 
 function App(props) {
-  const { token, id, loginUser } = props;
+  const { token, loginUser } = props;
+  const id = localStorage.getItem("userID")
   useEffect(() => {
     axiosWithAuth()
       .get(`https://dadjokesbw.herokuapp.com/api/users/${id}`)
@@ -58,7 +59,6 @@ function App(props) {
 
 const mapStateToProps = state => ({
   token: state.userReducer.token,
-  id: state.userReducer.user.id
 })
 
 export default connect(mapStateToProps, {loginUser})(App);
