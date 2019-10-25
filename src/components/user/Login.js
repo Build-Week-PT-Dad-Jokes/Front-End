@@ -4,18 +4,19 @@ import * as Yup from "yup";
 import axios from "axios"
 import {Link} from "react-router-dom"
 import { connect } from 'react-redux';
-import { loginUser } from '../../actions';
+import { setUserWithCreds } from '../../actions';
 import {showErrors} from "./userUtils"
 import PulseLoader from 'react-spinners/PulseLoader';
 
 
-function LoginForm({ errors, touched, isSubmitting }) {
+function LoginForm({ errors, touched, isSubmitting, status }) {
 
   return (
     <div className="login-container">
       <Form className="main-form">
         
         <div className="errors"> 
+          {!!status && <p style={{color: '#c92b2b'}}>{status.error}</p>}
         </div>
         <div className="above-boxes">
           <span>Username* </span>
@@ -84,7 +85,7 @@ const FormikLoginForm = withFormik({
   }),
 
 handleSubmit(values, { resetForm, setSubmitting, setStatus, props }) {
-    const {history, loginUser} = props
+    const {history, setUserWithCreds} = props
 
     //Need to confirm login credentials with a user on server
     axios
@@ -93,15 +94,15 @@ handleSubmit(values, { resetForm, setSubmitting, setStatus, props }) {
           resetForm();
           setSubmitting(false);
           setStatus(res.data);
-          loginUser(res.data);
-          localStorage.setItem("token", res.data.token)
+          setUserWithCreds(res.data);
           history.push('/home');
         })
         .catch(err => {
           console.error(err.response); 
           setSubmitting(false);
+          setStatus({error:'Invalid Username or Password.'})
         });
     }
 })(LoginForm);
 
-export default connect(null, {loginUser})(FormikLoginForm);
+export default connect(null, {setUserWithCreds})(FormikLoginForm);

@@ -1,13 +1,14 @@
-import { LOGIN_USER } from "../actions";
+import { LOGIN_USER, SET_TOKEN } from "../actions";
 
 const initialState = {
   token: localStorage.getItem("token"),
   user: {
-    id: null,
+    id: localStorage.getItem("userID"),
     username: "",
     email: "",
-    jokes: [],
-    date_created: ""
+    jokes: null,
+    date_created: "",
+    favorites: null,
   }
 };
 
@@ -16,16 +17,20 @@ export const userReducer = (state = initialState, {type, payload}) => {
     case LOGIN_USER:
       return {
         ...state,
-        token: payload.token,
         user: {
-          ...state.user,
-          date_created: payload.user.date_created,
-          email: payload.user.email,
-          id: payload.user.id,
-          jokes: payload.user.jokes,
-          username: payload.user.username,
+          date_created: payload.date_created,
+          email: payload.email,
+          id: payload.id,
+          jokes: payload.jokes,
+          username: payload.username,
+          favorites: payload.favorite_jokes
         }
       };
+    case SET_TOKEN:
+      return {
+        ...state,
+        token: payload
+      }
     default:
       return state;
   }
