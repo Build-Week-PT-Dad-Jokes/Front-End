@@ -12,7 +12,7 @@ const Home = props => {
             {/* <Link to="/favorites/7">
                 Go to favorites
             </Link> */}
-            {/* <FavoritesPage/> */}
+            <FavoritesPage/>
         </div>
     )
 }
