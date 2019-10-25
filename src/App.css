@@ -230,6 +230,7 @@ span {
   background-color: #848484;
 }
 .home-container .jokes-container {
+  padding-top: 10px;
   margin: 0 10%;
   text-align: left;
   display: flex;

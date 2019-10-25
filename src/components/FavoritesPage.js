@@ -1,6 +1,7 @@
 import React, { useEffect,useState } from "react"
 import Joke from "./Joke"
 import { connect } from 'react-redux';
+import Header from "./Header"
 
 
 const FavoritesPage = (props)=> {
@@ -13,16 +14,20 @@ const FavoritesPage = (props)=> {
         console.log(favorites, allJokes)
     }, [favorites, allJokes])
     return (
-        <div className="jokes-container">
-            <h2>Favorite Jokes</h2>
-            {!!favoriteArray && favoriteArray.map(joke=> {
-                return (
-                    <div className="single-joke" key={joke.id}>
-                        <Joke joke={joke} inheritBookmark />
-                    </div>
-                )
-            })}
+        <div className="home-container">
+             <Header />
+            <div className="jokes-container">
+                <h2 className="favorites-title">Favorite Jokes</h2>
+                {!!favoriteArray && favoriteArray.map(joke=> {
+                    return (
+                        <div className="single-joke" key={joke.id}>
+                            <Joke joke={joke} inheritBookmark />
+                        </div>
+                    )
+                })}
+            </div>
         </div>
+        
     )
 }
 const mapStateToProps = (state) => ({
