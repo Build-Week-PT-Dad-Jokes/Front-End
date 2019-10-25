@@ -147,6 +147,8 @@ span {
   margin-left: 5%;
 }
 .home-container {
+
+  background-color: #848484;
   
   .jokes-container {
     margin:0 10%;
@@ -168,6 +170,7 @@ span {
         background-color: #e5872f;
         width: 150px;
         padding:5px;
+        font-weight: bold;
       }
       
     }
@@ -267,19 +270,18 @@ span {
 }
 
 .search-box {
-  font-family: 'Roboto-Regular';
+  font-family: 'Roboto';
   font-size: 20px;
-  font-weight: normal;
-  font-stretch: normal;
-  font-style: normal;
-  line-height: normal;
-  letter-spacing: normal;
+  color: #CBCBCB;
   background: url(./img/magnifying-glass-vector-29.png) left 5px no-repeat;
   background-size: 13px;
   background-color: #AD6D6D;
   background-position: 5px;
   padding-left: 23px;
   width: 60%;
+  &&::placeholder {
+     color: #CBCBCB
+  }
 }
 
 .profile-logo {
@@ -290,5 +292,6 @@ span {
   box-shadow: 0 4px 2px -2px gray;
 }
 
-@import './landing-page.less';
-
+.simple-popover {
+  background-color: #FF9E44
+}

@@ -141,6 +141,9 @@ span {
   justify-content: space-between;
   margin-left: 5%;
 }
+.home-container {
+  background-color: #848484;
+}
 .home-container .jokes-container {
   margin: 0 10%;
   text-align: left;
@@ -163,6 +166,7 @@ span {
   background-color: #e5872f;
   width: 150px;
   padding: 5px;
+  font-weight: bold;
 }
 .home-container .jokes-container .single-joke {
   background: #721616;
@@ -250,19 +254,18 @@ span {
   margin-top: 5px;
 }
 .search-box {
-  font-family: 'Roboto-Regular';
+  font-family: 'Roboto';
   font-size: 20px;
-  font-weight: normal;
-  font-stretch: normal;
-  font-style: normal;
-  line-height: normal;
-  letter-spacing: normal;
+  color: #CBCBCB;
   background: url(./img/magnifying-glass-vector-29.png) left 5px no-repeat;
   background-size: 13px;
   background-color: #AD6D6D;
   background-position: 5px;
   padding-left: 23px;
   width: 60%;
+}
+.search-box.search-box::placeholder {
+  color: #CBCBCB;
 }
 .profile-logo {
   transform: scale(0.07);
@@ -271,88 +274,6 @@ span {
   right: -225px;
   box-shadow: 0 4px 2px -2px gray;
 }
-.wrapper {
-  background-image: linear-gradient(to bottom, #401414, rgba(63, 20, 20, 0.99), rgba(0, 0, 0, 0));
-  background-color: rgba(53, 53, 53, 0.65);
-  width: 100%;
-  height: 100vh;
-}
-.landing-page-header {
-  position: absolute;
-  top: 0;
-  left: 0;
-  display: flex;
-  justify-content: left;
-  padding: 1rem 0;
-  width: 90%;
-  margin: 0 auto;
-}
-.landing-page-header .help-button {
-  margin-left: 10px;
-  color: #cbcbcb;
-  cursor: pointer;
-  padding: 0.6rem;
-  border-radius: 50%;
-  text-align: center;
-  vertical-align: middle;
-  background: rgba(125, 125, 125, 0.6);
-  font-size: 2rem;
-  width: 4rem;
-  height: 4rem;
-}
-.landing-page-header .help-button span {
-  font-size: 2.6rem;
-}
-.landing-page.content {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  width: 100%;
-  margin: 0 auto;
-  padding-top: 6.5rem;
-}
-.landing-page.content .carousel {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background: rgba(132, 132, 132, 0.15);
-}
-.landing-page.content .carousel .left-button,
-.landing-page.content .carousel .right-button {
-  font-size: 4.8rem;
-  cursor: pointer;
-  position: absolute;
-  color: "#cbcbcb";
-  justify-content: center;
-}
-.landing-page.content .carousel .left-button {
-  padding-right: 2rem;
-  left: 5rem;
-}
-.landing-page.content .carousel .right-button {
-  padding-left: 2rem;
-  right: 5rem;
-}
-.landing-page.content .carousel .landing-page.joke {
-  justify-content: left;
-}
-.landing-page.content .carousel .landing-page.joke .joke-setup {
-  color: #cbcbcb;
-  font-size: 4.8rem;
-}
-.landing-page.content .carousel .landing-page.joke .joke-delivery {
-  color: #e5872f;
-  font-size: 4.8rem;
-}
-.landing-page.content .landing-page.container {
-  display: flex;
-  flex-direction: column;
-  width: 60%;
-  padding-top: 5rem;
-  justify-content: center;
-  margin: 0 auto;
-}
-.landing-page.content .landing-page.container .landing-page.tagline {
-  font-size: 3.6rem;
-  color: #cbcbcb;
+.simple-popover {
+  background-color: #FF9E44;
 }
