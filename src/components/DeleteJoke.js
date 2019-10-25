@@ -5,14 +5,14 @@ import { connect } from "react-redux";
 import { loginUser } from "../actions";
 
 const DeleteJoke = props => {
-  const { jokeID } = props;
+  const { jokeID, userID, loginUser } = props;
 
   const deleteJoke = id => {
     axiosWithAuth()
       .delete(`https://dadjokesbw.herokuapp.com/api/jokes/${id}`)
       .then(res => {
         axiosWithAuth()
-          .get(`/users/${id}`)
+          .get(`/users/${userID}`)
           .then(res => {
             loginUser(res.data);
             alert("This joke has successfully been deleted.");
@@ -27,7 +27,11 @@ const DeleteJoke = props => {
   );
 };
 
+const mapStateToProps = ({ userReducer: {user}}) => ({
+  userID: user.id
+})
+
 export default connect(
-  null,
+  mapStateToProps,
   { loginUser }
 )(DeleteJoke);
