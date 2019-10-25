@@ -3,7 +3,7 @@ import React from "react";
 export default function SearchForm(props) {
  
   return (
-    <section className="search-form">
+    <div className="search-form">
      <form onSubmit={props.handleSubmit}>
        <input 
           className="search-box"
@@ -11,9 +11,9 @@ export default function SearchForm(props) {
           name="search"
           value={props.search}
           onChange={props.handleChange}
-          placeholder="Search"
+          placeholder= " Search"
       />
      </form>
-    </section>
+    </div>
   );
 }
