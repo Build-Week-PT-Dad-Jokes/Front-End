@@ -3,16 +3,17 @@ import Joke from "./Joke"
 import axios from "axios"
 import JokeOfDay from "./JokeOfDay"
 import AddJokeModal from "./AddJokeModal"
+import { connect } from 'react-redux';
+import { setJokes } from '../actions';
 
 const JokesList = props => {
-    //placeholder state with test joke objects
-    const [apiJokes, setApiJokes] = useState()
     const [sortBy, setSortBy] = useState('default')
+    const { apiJokes, isSearching, setJokes, searchResponse } = props;
     useEffect(()=>{
         axios 
             .get('https://dadjokesbw.herokuapp.com/api/jokes')
             .then(resp => {
-                setApiJokes(resp.data)
+                setJokes(resp.data)
             })
             .catch(err=> console.log(err))
             
@@ -68,10 +69,10 @@ const JokesList = props => {
     
     return (
         <div className="jokes-container">
-            <h2>Random Joke</h2>
-            {!!apiJokes && <JokeOfDay jokes={apiJokes}/>}
+            {!isSearching && <h2>Random Joke</h2>}
+            {!!apiJokes && !isSearching && <JokeOfDay jokes={apiJokes}/>}
             <AddJokeModal />
-            <div className="recent-sort-container">
+        <div className="recent-sort-container">
                 {getPageTitle()}
                 <select 
                     className="select-input" 
@@ -85,18 +86,22 @@ const JokesList = props => {
                     <option value="topRated">Top Rated</option>
                 </select> 
             </div>
-            {/* {console.log(apiJokes)} */}
-            {getJokeContent()}
-            {/* <MostRecentJokes apiJokes={apiJokes}/>
-            <TopRated apiJokes={apiJokes}/>
-            <MostPopular apiJokes={apiJokes}/> */}
-            {/* {!!apiJokes && apiJokes.map((joke,ind)=>{
-                return ind<10 &&
-                    <div className="single-joke" key={joke.id}>
-                        <Joke joke={joke} />
-                    </div>
-            })} */}
-        </div>
+            {!isSearching ? <h2>Recent Jokes</h2> : <h2>Search Results</h2>}
+            {!!apiJokes && !isSearching && apiJokes.map(joke=>{
+                {getJokeContent()}
+            })}
+            {!!apiJokes && isSearching && searchResponse.map(joke => (
+                    {getJokeContent()}
+            ))}
+            </div>
+        
     )
 }
-export default JokesList
+
+const mapStateToProps = ({ jokesReducer: {jokes, isSearching, searchResponse }}) => ({
+    apiJokes: jokes,
+    isSearching,
+    searchResponse
+})
+
+export default connect(mapStateToProps, { setJokes })(JokesList)
