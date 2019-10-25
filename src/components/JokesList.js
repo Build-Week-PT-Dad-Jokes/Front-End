@@ -40,7 +40,7 @@ const JokesList = props => {
     const returnJoke = (joke, ind)=> {
         return ind<10 &&
             <div className="single-joke" key={joke.id}>
-                <Joke joke={joke} />
+                <Joke {...props} joke={joke} />
             </div>
     }
     const getJokeContent = () => {
@@ -71,7 +71,7 @@ const JokesList = props => {
     return (
         <div className="jokes-container">
             {!isSearching && <h2>Random Joke</h2>}
-            {!!apiJokes && !isSearching && <JokeOfDay jokes={apiJokes}/>}
+            {!!apiJokes && !isSearching && <JokeOfDay {...props} jokes={apiJokes}/>}
             <AddJokeModal />
         <div className="recent-sort-container">
                 {getPageTitle()}

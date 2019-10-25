@@ -11,7 +11,7 @@ const MyJokes = props => {
     return (
       ind < 10 && (
         <div className="single-joke" key={joke.id}>
-          <Joke joke={joke} />
+          <Joke {...props} joke={joke} />
         </div>
       )
     );

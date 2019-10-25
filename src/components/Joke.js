@@ -9,19 +9,19 @@ import {
 } from "@material-ui/icons/";
 import axiosWithAuth from "../utils/axiosWithAuth";
 import BookmarkButton from "./BookmarkButton";
-import UpdateJoke from './UpdateJoke';
-import DeleteJoke from './DeleteJoke';
+import UpdateJoke from "./UpdateJoke";
+import DeleteJoke from "./DeleteJoke";
 
 const Joke = props => {
   const { joke, match } = props;
   const [isBookmarked, setIsBookmarked] = useState(false);
   const [isSharing, setIsSharing] = useState(false);
   const [favoriteId, setFavoriteId] = useState();
-  const [inMyJokes, setInMyJokes] = useState(true);
+  const [inMyJokes, setInMyJokes] = useState(false);
 
-//   if (match.params !== "/myjokes") {
-//     setInMyJokes(false);
-//   }
+  useEffect(() => {
+    match.path === "/myjokes" && setInMyJokes(true);
+  }, [match]);
 
   useEffect(() => {
     updateFavorite();
@@ -63,8 +63,8 @@ const Joke = props => {
           <BookmarkButton bookmark={bookmark} isBookmarked={isBookmarked} />
         ) : (
           <>
-            <UpdateJoke joke={joke}/>
-            <DeleteJoke jokeID={joke.id}/>
+            <UpdateJoke joke={joke} />
+            <DeleteJoke jokeID={joke.id} />
           </>
         )}
       </div>
