@@ -13,7 +13,8 @@ const JokesList = props => {
         axios 
             .get('https://dadjokesbw.herokuapp.com/api/jokes')
             .then(resp => {
-                setJokes(resp.data)
+                const filteredPublic = resp.data.filter(ele=> !ele.private)
+                setJokes(filteredPublic)
             })
             .catch(err=> console.log(err))
             
@@ -87,11 +88,9 @@ const JokesList = props => {
                 </select> 
             </div>
             {!isSearching ? <h2>Recent Jokes</h2> : <h2>Search Results</h2>}
-            {!!apiJokes && !isSearching && apiJokes.map(joke=>{
-                {getJokeContent()}
-            })}
-            {!!apiJokes && isSearching && searchResponse.map(joke => (
-                    {getJokeContent()}
+            {!isSearching && getJokeContent()}
+            {!!apiJokes && isSearching && searchResponse.map((joke,ind) => (
+                returnJoke(joke, ind)
             ))}
             </div>
         

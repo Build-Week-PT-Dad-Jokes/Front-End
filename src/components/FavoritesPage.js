@@ -6,11 +6,6 @@ const FavoritesPage = ()=> {
     const userId = 2
     const [favoriteArray, setFavoriteArray] = useState([])
     const favorites = [{}]
-
-
-    const addToFavs =  item =>{
-        
-    }
     const asyncTest = async () => {
         await axiosWithAuth()
             .get(`/users/${userId}`)
