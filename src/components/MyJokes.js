@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import Header from "./Header";
 import Joke from "./Joke";
 import AddJokeModal from "./AddJokeModal";
+import BackButton from "./BackButton";
 
 const MyJokes = props => {
   const { myJokes } = props;
@@ -20,6 +21,7 @@ const MyJokes = props => {
   return (
     <div className="home-container">
       <Header />
+      <BackButton {...props} style={{justifySelf: "left"}} />
       <div className="jokes-container">
         <AddJokeModal />
         <h2>My Jokes</h2>
