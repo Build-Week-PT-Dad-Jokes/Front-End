@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
-import EditIcon from '@material-ui/icons/Edit';
-import Button from '@material-ui/core/Button';
+import EditIcon from "@material-ui/icons/Edit";
+import Button from "@material-ui/core/Button";
 import TextField from "@material-ui/core/TextField";
 import Dialog from "@material-ui/core/Dialog";
 import DialogActions from "@material-ui/core/DialogActions";
@@ -11,10 +11,14 @@ import useMediaQuery from "@material-ui/core/useMediaQuery";
 import axiosWithAuth from "../utils/axiosWithAuth";
 import Switch from "@material-ui/core/Switch";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
+import { loginUser } from "../actions";
+import { connect } from "react-redux";
 
 function UpdateJoke(props) {
-  const { joke } = props;
-  const [checkedPrivate, setCheckedPrivate] = useState(() => joke.private === 1);
+  const { joke, loginUser } = props;
+  const [checkedPrivate, setCheckedPrivate] = useState(
+    () => joke.private === 1
+  );
   const [open, setOpen] = useState(false);
   const [newJoke, setNewJoke] = useState({
     first_line: joke.first_line,
@@ -43,12 +47,12 @@ function UpdateJoke(props) {
       [name]: value
     });
   };
-  const handleAdd = e => {
+  const handleUpdate = e => {
     e.preventDefault();
     axiosWithAuth()
-      .post("/jokes", newJoke)
+      .put(`/jokes/${joke.id}`, newJoke)
       .then(response => {
-        console.log(response);
+        loginUser();
         handleClose();
       })
       .catch(err => {
@@ -60,9 +64,7 @@ function UpdateJoke(props) {
 
   return (
     <div className="add-joke-container">
-      <EditIcon onClick={handleClickOpen}>
-        Update Joke
-      </EditIcon>
+      <EditIcon onClick={handleClickOpen}>Update Joke</EditIcon>
       <Dialog
         PaperProps={{
           style: {
@@ -76,7 +78,7 @@ function UpdateJoke(props) {
         onClose={handleClose}
         aria-labelledby="form-dialog-title"
       >
-        <form onSubmit={handleAdd}>
+        <form onSubmit={handleUpdate}>
           <DialogTitle id="form-dialog-title">Update Your Joke</DialogTitle>
           <DialogContent>
             <DialogContentText>
@@ -135,4 +137,7 @@ function UpdateJoke(props) {
   );
 }
 
-export default UpdateJoke;
+export default connect(
+  null,
+  { loginUser }
+)(UpdateJoke);
