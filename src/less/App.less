@@ -209,6 +209,11 @@ span {
 #form-dialog-title {
   font-size: 4rem;
 }
+.bottom-joke-modal {
+  display: flex;
+  justify-content: space-between;
+  margin-left: 5%;
+}
 .home-container {
   
   .jokes-container {
@@ -217,6 +222,14 @@ span {
     display: flex;
     flex-direction: column;
     padding-bottom: 100px;
+    .recent-sort-container {
+      display: flex;
+      justify-content: space-between;
+      .select-input {
+        background: lightgray;
+        width: 150px;
+      }
+    }
     .add-joke-container {
       align-self: center;
       .add-joke-button {
@@ -248,13 +261,14 @@ span {
       .bookmark-button {
         color:#e5872f;
         cursor: pointer;
+        margin-right: 8px;
       }
       .share-button {
         color: #cbcbcb;
         cursor: pointer;
         background: rgba(206, 206, 206, 0.5);
-        border-radius: 16px;
-        padding: 5px;
+        border-radius: 32px;
+        padding: 5px 7px;
       }
       .share-icons {
         color: #cbcbcb;
@@ -265,6 +279,15 @@ span {
         &>* {
           padding: 0 5px;
           cursor: pointer;
+        }
+        .twitter {
+          color: #55acee;
+        }
+        .facebook {
+          color: #3b5998;
+        }
+        .chat {
+          color: #59bb59;
         }
       }
     }

@@ -13,6 +13,7 @@ import Footer from "./components/Footer"
 import LandingPage from './components/LandingPage';
 import Home from "./components/Home"
 import CreateLoginHeader from "./components/CreateLoginHeader";
+import FavoritesPage from "./components/FavoritesPage"
 
 function App(props) {
   const { token, id, loginUser } = props;
@@ -45,6 +46,7 @@ function App(props) {
         />
         <Route exact path="/" render={props => <LandingPage {...props} />} />
         <Route exact path="/home" render={props => <Home {...props} />}/>
+        <Route path="/favorites/:id" render={props=> <FavoritesPage {...props} />}/>
         <Route render={() => <Redirect to={{pathname: "/"}} />} />
       </Switch>
       <Footer />

@@ -9,13 +9,14 @@ import {showErrors} from "./userUtils"
 import PulseLoader from 'react-spinners/PulseLoader';
 
 
-function LoginForm({ errors, touched, isSubmitting }) {
+function LoginForm({ errors, touched, isSubmitting, status }) {
 
   return (
     <div className="login-container">
       <Form className="main-form">
         
         <div className="errors"> 
+          {!!status && <p style={{color: '#c92b2b'}}>{status.error}</p>}
         </div>
         <div className="above-boxes">
           <span>Username* </span>
@@ -99,6 +100,7 @@ handleSubmit(values, { resetForm, setSubmitting, setStatus, props }) {
         .catch(err => {
           console.error(err.response); 
           setSubmitting(false);
+          setStatus({error:'Invalid Username or Password.'})
         });
     }
 })(LoginForm);

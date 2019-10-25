@@ -134,7 +134,7 @@ handleSubmit(values, { resetForm, setSubmitting, setStatus, props }) {
         .catch(err => {
           console.log(err.response);
           setSubmitting(false);
-          setStatus({error: "Username not available"})
+          setStatus({error: "Username or email not available"})
         })
     }
 })(CreateForm);
