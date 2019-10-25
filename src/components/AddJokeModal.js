@@ -46,7 +46,6 @@ function AddJokeModal() {
     axiosWithAuth()
       .post("/jokes", newJoke)
         .then(response => {
-          console.log(response)
           handleClose()
         })
         .catch(err => {
