@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react';
 import {Route, Redirect, Switch} from "react-router";
-import axiosWithAuth from './utils/axiosWithAuth';
 import { connect } from 'react-redux';
 import PrivateRoute from './utils/PrivateRoute';
 import { loginUser } from './actions';
@@ -43,7 +42,7 @@ function App(props) {
         <Route exact path="/" render={props => <LandingPage {...props} />} />
         <Route exact path="/home" render={props => <Home {...props} />}/>
         <PrivateRoute path="/myjokes" render={props => <MyJokes {...props} />} />
-        <PrivateRoute exact path="/favorites" component={FavoritesPage}/>
+        <PrivateRoute exact path="/favorites" render={props => <FavoritesPage {...props} />}/>
         <Route render={() => <Redirect to={{pathname: "/"}} />} />
       </Switch>
       <Footer />
