@@ -3,13 +3,8 @@ import { Link } from "react-router-dom";
 import logo from '../img/logo.png';
 import user from '../img/user.png';
 import SearchForm from './SearchForm';
-<<<<<<< HEAD
 import axios from 'axios';
 import ProfileButton from './ProfileButton';
-=======
-import { connect } from 'react-redux';
-import { setSearchResponse, endSearch } from '../actions';
->>>>>>> f412cfd8970842a29d3f0749893a25118138a5ee
 
 function Header(props) {
   const { apiJokes, endSearch, setSearchResponse } = props;
