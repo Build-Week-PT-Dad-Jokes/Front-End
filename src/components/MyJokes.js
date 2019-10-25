@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-
+import Header from "./Header";
 import Joke from "./Joke";
 import AddJokeModal from "./AddJokeModal";
 
@@ -19,6 +19,7 @@ const MyJokes = props => {
 
   return (
     <div className="home-container">
+      <Header />
       <div className="jokes-container">
         <AddJokeModal />
         <h2>My Jokes</h2>
