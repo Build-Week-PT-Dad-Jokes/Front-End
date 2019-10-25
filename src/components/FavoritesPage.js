@@ -5,35 +5,41 @@ import Joke from "./Joke"
 const FavoritesPage = ()=> {
     const userId = 2
     const [favoriteArray, setFavoriteArray] = useState([])
-    
-    const addToFavs = res =>{
-            const favorite = res.data
-            setFavoriteArray([...favoriteArray, favorite])
+    const favorites = [{}]
+
+
+    const addToFavs =  item =>{
+        
     }
-    
-    useEffect(()=> {
-        axiosWithAuth()
+    const asyncTest = async () => {
+        await axiosWithAuth()
             .get(`/users/${userId}`)
             .then(res => {
                 return res.data.favorite_jokes
             })
             .then(list => {
-                list.map(item=> {
+                const favorites = list.map(item=> {
                     axiosWithAuth()
                         .get(`/jokes/${item.joke_id}`)
-                        .then(addToFavs)
-                })
-                // console.log(favorites)
-                
+                        .then(res=>{
+                            return res.data
+                        })
+                        .catch(err=> console.log(err))
+                        })
+            console.log(favorites)
+                setFavoriteArray(favorites)
             })
             .catch(err=> console.log(err))
+    }
+    
+    useEffect(()=> {
+        asyncTest()
     },[])
     useEffect(()=> {}, [favoriteArray])
 
     return (
         <div className="jokes-container">
             <h2>Favorite Jokes</h2>
-            {console.log(favoriteArray)}
             {!!favoriteArray && favoriteArray.map(joke=> {
                 return (
                     <div className="single-joke" key={joke.id}>

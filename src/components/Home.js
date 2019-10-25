@@ -8,11 +8,11 @@ const Home = props => {
     return (
         <div className="home-container">
             <Header />
-            {/* <JokesList /> */}
+            <JokesList />
             {/* <Link to="/favorites/7">
                 Go to favorites
             </Link> */}
-            <FavoritesPage/>
+            {/* <FavoritesPage/> */}
         </div>
     )
 }

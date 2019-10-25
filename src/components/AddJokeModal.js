@@ -17,13 +17,13 @@ function AddJokeModal() {
   const [newJoke, setNewJoke]=useState({
     first_line: '',
     punchline: '',
-    private: ''
+    private: false
   })
 
   useEffect(()=> {
     setNewJoke({
       ...newJoke,
-      private: checkedPrivate ? '1' : '0'
+      private: checkedPrivate ? true : false
     })
   }, [checkedPrivate])
 
