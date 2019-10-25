@@ -18,14 +18,8 @@ import MyJokes from './components/MyJokes';
 
 function App(props) {
   const { token, loginUser } = props;
-  const id = localStorage.getItem("userID")
   useEffect(() => {
-    axiosWithAuth()
-      .get(`https://dadjokesbw.herokuapp.com/api/users/${id}`)
-      .then(res => {
-        loginUser(res.data);
-      })
-      .catch(err => console.error(err.response))
+        loginUser();
   }, [token])
 
   return (
