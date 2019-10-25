@@ -7,18 +7,18 @@ const FavoritesPage = (props)=> {
     const {favorites, allJokes} = props
     const [favoriteArray, setFavoriteArray] = useState([])
     useEffect(()=> {
-        console.log(favorites,allJokes)
         const jokeIds = !!favorites ? favorites.map(fav=> fav.joke_id) : []
         const filtered = !!allJokes ? allJokes.filter(joke=> jokeIds.includes(joke.id)) : []
         setFavoriteArray(filtered)
-    }, [])
+        console.log(favorites, allJokes)
+    }, [favorites, allJokes])
     return (
         <div className="jokes-container">
             <h2>Favorite Jokes</h2>
             {!!favoriteArray && favoriteArray.map(joke=> {
                 return (
                     <div className="single-joke" key={joke.id}>
-                        <Joke joke={joke} />
+                        <Joke joke={joke} inheritBookmark />
                     </div>
                 )
             })}

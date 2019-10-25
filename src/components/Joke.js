@@ -1,15 +1,24 @@
 import React, {useState, useEffect} from "react"
 import {BookmarkBorder, Bookmark, Share, Facebook, Twitter, ChatBubble} from '@material-ui/icons/';
 import axiosWithAuth from "../utils/axiosWithAuth"
+import { connect } from 'react-redux';
+import { loginUser } from '../actions';
 
-const Joke = ({joke}) => {
-    
-    const [isBookmarked, setIsBookmarked] = useState(false)
+const Joke = ({joke, inheritBookmark=false}, props) => {
+    const { token, loginUser } = props;
+    const id = localStorage.getItem("userID")
+    const [isBookmarked, setIsBookmarked] = useState(inheritBookmark)
     const [isSharing, setIsSharing] = useState(false)
     const [favoriteId, setFavoriteId] = useState()
 
     useEffect(()=> {
         updateFavorite()
+        // axiosWithAuth()
+        //     .get(`/users/${id}`)
+        //     .then(res => {
+        //         loginUser(res.data);
+        //     })
+        //     .catch(err => console.error(err))
     },[isBookmarked])
 
     const bookmark = event => {
@@ -20,7 +29,6 @@ const Joke = ({joke}) => {
             axiosWithAuth()
             .post(`/favorite-joke/${joke.id}`)
             .then(response => {
-                console.log(response)
                 setFavoriteId(response.data.favoritedJoke.id)
             })
             .catch(err => {
@@ -31,7 +39,6 @@ const Joke = ({joke}) => {
             axiosWithAuth()
             .delete(`/favorite-joke/${favoriteId}`)
             .then(response => {
-                console.log(response)
             })
             .catch(err => {
                 console.log(err)
@@ -71,4 +78,8 @@ const Joke = ({joke}) => {
     )
 }
 
-export default Joke
+const mapStateToProps = state => ({
+    token: state.userReducer.token,
+  })
+  
+export default connect(mapStateToProps, {loginUser})(Joke);
