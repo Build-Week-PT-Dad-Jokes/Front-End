@@ -23,7 +23,7 @@ const JokesList = props => {
     const getPageTitle = ()=> {
         if(sortBy==='mostPopular'){
             return(
-                !isSearching ? <h2>Most Recent</h2> : <h2>Search Results</h2>
+                !isSearching ? <h2>Most Popular</h2> : <h2>Search Results</h2>
             )
         }
         if(sortBy==='mostRecent' || sortBy==='default'){
@@ -33,7 +33,7 @@ const JokesList = props => {
         }
         if(sortBy==='topRated'){
             return(
-                !isSearching ? <h2>Most Recent</h2> : <h2>Search Results</h2>
+                !isSearching ? <h2>Top Rated</h2> : <h2>Search Results</h2>
             )
         }
     }
@@ -73,7 +73,7 @@ const JokesList = props => {
             {!isSearching && <h2>Random Joke</h2>}
             {!!apiJokes && !isSearching && <JokeOfDay {...props} jokes={apiJokes}/>}
             <AddJokeModal />
-        <div className="recent-sort-container">
+            <div className="recent-sort-container">
                 {getPageTitle()}
                 <select 
                     className="select-input" 
