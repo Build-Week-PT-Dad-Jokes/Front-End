@@ -13,12 +13,13 @@ import Switch from "@material-ui/core/Switch";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 
 function UpdateJoke(props) {
-  const [checkedPrivate, setCheckedPrivate] = useState(false);
+  const { joke } = props;
+  const [checkedPrivate, setCheckedPrivate] = useState(() => joke.private === 1);
   const [open, setOpen] = useState(false);
   const [newJoke, setNewJoke] = useState({
-    first_line: "",
-    punchline: "",
-    private: false
+    first_line: joke.first_line,
+    punchline: joke.punchline,
+    private: joke.private === 1
   });
 
   useEffect(() => {

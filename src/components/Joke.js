@@ -63,7 +63,7 @@ const Joke = props => {
           <BookmarkButton bookmark={bookmark} isBookmarked={isBookmarked} />
         ) : (
           <>
-            <UpdateJoke />
+            <UpdateJoke joke={joke}/>
             <DeleteJoke jokeID={joke.id}/>
           </>
         )}
