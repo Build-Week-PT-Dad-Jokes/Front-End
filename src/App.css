@@ -283,6 +283,9 @@ span {
   justify-content: space-between;
   align-items: center;
 }
+.home-container .jokes-container .single-joke .icon-flex-container .edit-joke-buttons > * {
+  cursor: pointer;
+}
 .home-container .jokes-container .single-joke .bookmark-button {
   color: #e5872f;
   cursor: pointer;
