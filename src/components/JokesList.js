@@ -17,7 +17,7 @@ const JokesList = props => {
                 setJokes(filteredPublic)
             })
             .catch(err=> console.log(err))
-            
+            // eslint-disable-next-line
     }, [])
 
     const getPageTitle = ()=> {

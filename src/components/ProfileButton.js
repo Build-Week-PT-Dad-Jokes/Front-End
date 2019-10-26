@@ -32,7 +32,7 @@ const useStyles = makeStyles(theme => ({
   return (
     <div>
       <div className ="profile-logo" aria-describedby={id} onClick={handleClick}>
-        <img src={user}/>
+        <img src={user} alt="user-profile-logo"/>
       </div>
       <Popover
         id={id}

@@ -1,9 +1,7 @@
-import React, { useState, useEffect } from "react";
+import React, { useState} from "react";
 import { Link } from "react-router-dom";
 import logo from '../img/logo.png';
-import user from '../img/user.png';
 import SearchForm from './SearchForm';
-import axios from 'axios';
 import ProfileButton from './ProfileButton';
 import { connect } from 'react-redux';
 import {setSearchResponse, endSearch} from "../actions"
@@ -40,7 +38,7 @@ function Header(props) {
     <header className="home-header">
       <Link to="/home">
       <div className="logo">
-        <img src={logo}/> 
+        <img src={logo} alt="logo"/> 
       </div>
       </Link>
       <SearchForm 

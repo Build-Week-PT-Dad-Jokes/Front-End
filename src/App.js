@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import {Route, Redirect, Switch} from "react-router";
 import axiosWithAuth from './utils/axiosWithAuth';
 import { connect } from 'react-redux';
-import PrivateRoute from './utils/PrivateRoute';
+// import PrivateRoute from './utils/PrivateRoute';
 import { loginUser } from './actions';
 import "./App.css";
 
@@ -25,7 +25,8 @@ function App(props) {
         loginUser(res.data);
       })
       .catch(err => console.error(err.response))
-  }, [token])
+      // eslint-disable-next-line
+  }, [token, loginUser])
 
   return (
     <div className="App">

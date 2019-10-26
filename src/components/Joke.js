@@ -5,8 +5,8 @@ import { connect } from 'react-redux';
 import { loginUser } from '../actions';
 
 const Joke = ({joke, inheritBookmark=false}, props) => {
-    const { token, loginUser } = props;
-    const id = localStorage.getItem("userID")
+    // const { token, loginUser } = props;
+    // const id = localStorage.getItem("userID")
     const [isBookmarked, setIsBookmarked] = useState(inheritBookmark)
     const [isSharing, setIsSharing] = useState(false)
     const [favoriteId, setFavoriteId] = useState()
@@ -19,6 +19,7 @@ const Joke = ({joke, inheritBookmark=false}, props) => {
         //         loginUser(res.data);
         //     })
         //     .catch(err => console.error(err))
+        // eslint-disable-next-line
     },[isBookmarked])
 
     const bookmark = event => {
