@@ -2,6 +2,7 @@ import axiosWithAuth from "../utils/axiosWithAuth";
 
 export const SET_TOKEN = "SET_TOKEN";
 export const LOGIN_USER = "LOGIN_USER";
+export const SIGN_OUT = "SIGN_OUT";
 
 export const SET_JOKES = "SET_JOKES";
 export const SEARCH_RESPONSE = "SEARCH_RESPONSE";
@@ -24,6 +25,12 @@ export const loginUser = () => dispatch => {
     })
     .catch(err => console.error(err.response));
 };
+
+export const signOut = () => {
+  localStorage.removeItem("token");
+  localStorage.removeItem("userID");
+  return {type: SIGN_OUT}
+}
 
 // Jokes Actions
 

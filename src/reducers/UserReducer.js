@@ -1,4 +1,4 @@
-import { LOGIN_USER, SET_TOKEN } from "../actions";
+import { LOGIN_USER, SET_TOKEN, SIGN_OUT } from "../actions";
 
 const initialState = {
   token: localStorage.getItem("token"),
@@ -30,6 +30,10 @@ export const userReducer = (state = initialState, {type, payload}) => {
       return {
         ...state,
         token: payload
+      }
+    case SIGN_OUT:
+      return {
+        ...initialState
       }
     default:
       return state;

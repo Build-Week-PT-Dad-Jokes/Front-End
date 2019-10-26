@@ -4,6 +4,8 @@ import Popover from '@material-ui/core/Popover';
 import Typography from '@material-ui/core/Typography';
 import user from '../img/user.png';
 import {Link} from "react-router-dom";
+import { connect } from "react-redux";
+import { signOut } from "../actions";
 
 const useStyles = makeStyles(theme => ({
   typography: {
@@ -12,9 +14,14 @@ const useStyles = makeStyles(theme => ({
     borderRadius: "2px",
     fontWeight: "bold"
   },
+  link: {
+    textDecoration: 'none',
+    color: 'black',
+    fontFamily: "Roboto"
+  }
 }));
 
- function ProfileButton() {
+ function ProfileButton(props) {
   const classes = useStyles();
   const [anchorEl, setAnchorEl] = React.useState(null);
 
@@ -28,6 +35,10 @@ const useStyles = makeStyles(theme => ({
 
   const open = Boolean(anchorEl);
   const id = open ? 'simple-popover' : undefined;
+
+  const logout = () => {
+    props.signOut();
+  }
 
   return (
     <div>
@@ -49,16 +60,19 @@ const useStyles = makeStyles(theme => ({
         }}
       >
         <Typography className={classes.typography}>
-              <Link style={{ textDecoration: 'none', color: 'black', fontFamily: "Roboto" }} to="/myjokes">
+              <Link className={classes.link} to="/myjokes">
                 <p>My Jokes</p>
               </Link>
-              <Link style={{ textDecoration: 'none', color: 'black', fontFamily: "Roboto"  }} to="/favorites">
+              <Link className={classes.link} to="/favorites">
                 <p>Favorite Jokes</p>
               </Link>
+              <p className={classes.link} onClick={logout}>
+                Sign Out
+              </p>
           </Typography>
       </Popover>
     </div>
   );
 }
 
-export default ProfileButton
+export default connect(null, { signOut })(ProfileButton)
