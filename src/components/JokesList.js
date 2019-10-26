@@ -10,14 +10,7 @@ const JokesList = props => {
     const [sortBy, setSortBy] = useState('default')
     const { apiJokes, isSearching, setJokes, searchResponse } = props;
     useEffect(()=>{
-        axios 
-            .get('https://dadjokesbw.herokuapp.com/api/jokes')
-            .then(resp => {
-                const filteredPublic = resp.data.filter(ele=> !ele.private)
-                setJokes(filteredPublic)
-            })
-            .catch(err=> console.log(err))
-            // eslint-disable-next-line
+        setJokes()
     }, [])
 
     const getPageTitle = ()=> {
