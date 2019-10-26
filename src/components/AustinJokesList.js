@@ -21,6 +21,7 @@ export default function AustinJokesList() {
                         id={joke.id}
                         first_line={joke.first_line}
                         punchline={joke.punchline}
+                        rating={joke.rating}
                     />)
             }
         </div>

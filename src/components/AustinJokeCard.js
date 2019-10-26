@@ -7,11 +7,10 @@ export default function AustinJokeCard(props) {
         <div className="joke-card">
             <Card>
                 <Card.Body>
-                    <Card.Text>
-                        <p>{props.first_line}</p>
-                        <p>{props.punchline}</p>
-                    </Card.Text>
-                    <Button variant="primary">Rate Joke!</Button>
+                    <p>{props.first_line}</p>
+                    <p>{props.punchline}</p>
+                    <p>Rating: {props.rating}</p>
+                    <Button className="rate-button">Rate Joke</Button>
                 </Card.Body>
             </Card>
         </div>
