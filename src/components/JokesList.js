@@ -5,7 +5,6 @@ import JokeOfDay from "./JokeOfDay"
 import AddJokeModal from "./AddJokeModal"
 import { connect } from 'react-redux';
 import { setJokes } from '../actions';
-import {_sortBy} from "underscore"
 
 const JokesList = props => {
     const [sortBy, setSortBy] = useState('default')
