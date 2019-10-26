@@ -17,7 +17,8 @@ const useStyles = makeStyles(theme => ({
   link: {
     textDecoration: 'none',
     color: 'black',
-    fontFamily: "Roboto"
+    fontFamily: "Roboto",
+    cursor: "pointer"
   }
 }));
 
