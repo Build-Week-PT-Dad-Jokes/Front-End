@@ -44,7 +44,8 @@ const JokesList = props => {
             })
         }
         if(sortBy==='topRated'){
-            return !!apiJokes && apiJokes.sort((a,b)=> b.rating - a.rating).map((joke,ind)=>{
+            let topRated = [...apiJokes];
+            return !!apiJokes && topRated.sort((a,b)=> b.rating - a.rating).map((joke,ind)=>{
                 return returnJoke(joke, ind)
             })
         }
