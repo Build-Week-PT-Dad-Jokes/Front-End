@@ -30,7 +30,7 @@ const LandingPage = props => {
     <div className="wrapper">
       <div className="landing-page content">
         <div className="carousel">
-          <img src={leftArrow} className="left-button" />
+          <img src={leftArrow} className="left-button" alt="left-arrow"/>
           <div className="landing-page joke">
             <h2 className="landing-page joke-setup">
               What concert costs just 45 cents?
@@ -39,14 +39,14 @@ const LandingPage = props => {
               50 Cent featuring Nickelback!
             </h2>
           </div>
-          <img src={rightArrow} className="right-button" />
+          <img src={rightArrow} className="right-button" alt="right-arrow"/>
         </div>
         <div className="landing-page container">
           <p className="landing-page tagline">You're a funny guy, but you keep losing your list of jokes and forgetting which ones had the best reactions! Well worry no more- Dad (or bad??) jokes app to the rescue.</p>
           <Link to="/signup">
             <Button className={classes.button1}>Create an Account</Button>
           </Link>
-          <span>
+          <span className="landing-page-login">
             Already have an account? <Link to="/login">Login</Link>
           </span>
           <span>

@@ -17,7 +17,7 @@ const JokesList = props => {
                 setJokes(filteredPublic)
             })
             .catch(err=> console.log(err))
-            
+            // eslint-disable-next-line
     }, [])
 
     const getPageTitle = ()=> {
@@ -56,7 +56,7 @@ const JokesList = props => {
             })
         }
         if(sortBy==='topRated'){
-            return !!apiJokes && apiJokes.map((joke,ind)=>{
+            return !!apiJokes && apiJokes.sort((a,b)=> b.rating - a.rating).map((joke,ind)=>{
                 return returnJoke(joke, ind)
             })
         }

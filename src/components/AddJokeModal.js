@@ -25,6 +25,7 @@ function AddJokeModal() {
       ...newJoke,
       private: checkedPrivate ? true : false
     })
+    // eslint-disable-next-line
   }, [checkedPrivate])
 
   const handleClickOpen = () => {

@@ -31,6 +31,7 @@ function UpdateJoke(props) {
       ...newJoke,
       private: checkedPrivate ? true : false
     });
+    // eslint-disable-next-line
   }, [checkedPrivate]);
 
   const handleClickOpen = () => {
@@ -65,6 +66,7 @@ function UpdateJoke(props) {
   return (
     <div className="add-joke-container">
       <EditIcon
+        className= "edit-icon"
         onClick={handleClickOpen}
         style={{ color: "#e5872f", fontSize: "2.4rem" }}
       >

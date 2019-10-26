@@ -5,6 +5,7 @@ import { connect } from "react-redux";
 import { loginUser } from "../actions";
 
 const DeleteJoke = props => {
+  // eslint-disable-next-line
   const { jokeID, userID, loginUser } = props;
 
   const deleteJoke = id => {
@@ -19,6 +20,7 @@ const DeleteJoke = props => {
 
   return (
     <DeleteIcon
+      className="delete-icon"
       onClick={() => deleteJoke(jokeID)}
       style={{ color: "#c92b2b", fontSize: "2.4rem" }}
     />

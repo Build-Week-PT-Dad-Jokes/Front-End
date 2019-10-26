@@ -14,6 +14,7 @@ import { connect } from 'react-redux';
 import { loginUser } from '../actions';
 
 const Joke = props => {
+  // eslint-disable-next-line
   const { joke, match, inheritBookmark = false, token, loginUser } = props;
   const [isBookmarked, setIsBookmarked] = useState(inheritBookmark);
   const [isSharing, setIsSharing] = useState(false);
@@ -22,10 +23,12 @@ const Joke = props => {
 
   useEffect(() => {
     match.path === "/myjokes" && setInMyJokes(true);
+    // eslint-disable-next-line
   }, [match]);
 
   useEffect(() => {
     updateFavorite();
+    // eslint-disable-next-line
   }, [isBookmarked]);
 
   const bookmark = event => {
