@@ -1,12 +1,17 @@
-import React from "react"
+import React, { useState, useEffect } from "react"
 import Joke from "./Joke"
 
 const JokeOfDay = props => {
+    const[randomJoke, setRandomJoke] = useState();
     const { jokes } = props;
-    const randomJoke = jokes[Math.floor(Math.random()*jokes.length)];
+
+    useEffect(() =>{
+        setRandomJoke(jokes[Math.floor(Math.random()*jokes.length)]);
+    }, [jokes])
+
     return(
         <div className="single-joke">
-            <Joke {...props} joke={randomJoke} />
+            {randomJoke && <Joke {...props} joke={randomJoke} />}
         </div>
     )
 }
