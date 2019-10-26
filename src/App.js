@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import {Route, Redirect, Switch} from "react-router";
 import { connect } from 'react-redux';
-// import PrivateRoute from './utils/PrivateRoute';
+import PrivateRoute from './utils/PrivateRoute';
 import { loginUser } from './actions';
 import "./App.css";
 
