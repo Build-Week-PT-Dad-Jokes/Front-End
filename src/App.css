@@ -2,7 +2,8 @@
   background-image: linear-gradient(to bottom, #401414, rgba(63, 20, 20, 0.99), rgba(0, 0, 0, 0));
   background-color: rgba(53, 53, 53, 0.65);
   width: 100%;
-  height: 100vh;
+  position: relative;
+  min-height: 100vh;
 }
 .landing-page-header {
   position: absolute;
@@ -82,6 +83,15 @@
 .landing-page.content .landing-page.container .landing-page.tagline {
   font-size: 3.6rem;
   color: #cbcbcb;
+}
+.landing-page.content .landing-page.container .landing-page-login a {
+  color: blue;
+}
+.landing-page.content .landing-page.container .landing-page-login a:hover {
+  color: #2424ff;
+}
+.landing-page.content .landing-page.container .landing-page-login a:active {
+  color: #e5872f;
 }
 * {
   box-sizing: border-box;

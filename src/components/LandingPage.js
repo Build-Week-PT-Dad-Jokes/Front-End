@@ -46,7 +46,7 @@ const LandingPage = props => {
           <Link to="/signup">
             <Button className={classes.button1}>Create an Account</Button>
           </Link>
-          <span>
+          <span className="landing-page-login">
             Already have an account? <Link to="/login">Login</Link>
           </span>
           <span>
