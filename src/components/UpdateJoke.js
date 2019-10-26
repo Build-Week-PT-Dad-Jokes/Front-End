@@ -31,6 +31,7 @@ function UpdateJoke(props) {
       ...newJoke,
       private: checkedPrivate ? true : false
     });
+    // eslint-disable-next-line
   }, [checkedPrivate]);
 
   const handleClickOpen = () => {

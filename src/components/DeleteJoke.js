@@ -5,6 +5,7 @@ import { connect } from "react-redux";
 import { loginUser } from "../actions";
 
 const DeleteJoke = props => {
+  // eslint-disable-next-line
   const { jokeID, userID, loginUser } = props;
 
   const deleteJoke = id => {

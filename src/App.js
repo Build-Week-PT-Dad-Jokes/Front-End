@@ -19,6 +19,7 @@ function App(props) {
   const { token, loginUser } = props;
   useEffect(() => {
         loginUser();
+        // eslint-disable-next-line
   }, [token])
 
   return (
