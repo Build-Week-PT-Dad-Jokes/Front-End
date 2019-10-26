@@ -38,6 +38,7 @@ const useStyles = makeStyles(theme => ({
 
   const logout = () => {
     props.signOut();
+    alert('You have been signed out')
   }
 
   return (
