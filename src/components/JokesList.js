@@ -1,17 +1,12 @@
-import React, {useState, useEffect} from "react"
+import React, {useState} from "react"
 import Joke from "./Joke"
-import axios from "axios"
 import JokeOfDay from "./JokeOfDay"
 import AddJokeModal from "./AddJokeModal"
 import { connect } from 'react-redux';
-import { setJokes } from '../actions';
 
 const JokesList = props => {
     const [sortBy, setSortBy] = useState('default')
-    const { apiJokes, isSearching, setJokes, searchResponse } = props;
-    useEffect(()=>{
-        setJokes()
-    }, [])
+    const { apiJokes, isSearching, searchResponse } = props;
 
     const getPageTitle = ()=> {
         if(sortBy==='mostPopular'){
@@ -96,4 +91,4 @@ const mapStateToProps = ({ jokesReducer: {jokes, isSearching, searchResponse }})
     searchResponse
 })
 
-export default connect(mapStateToProps, { setJokes })(JokesList)
+export default connect(mapStateToProps, {})(JokesList)
