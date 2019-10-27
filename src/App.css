@@ -1,5 +1,5 @@
 .wrapper {
-  background-image: linear-gradient(to bottom, #401414, rgba(63, 20, 20, 0.99), rgba(0, 0, 0, 0));
+  background-image: linear-gradient(to bottom, #401414, rgba(0, 0, 0, 0));
   background-color: rgba(53, 53, 53, 0.65);
   width: 100%;
   position: relative;
@@ -62,15 +62,23 @@
   right: 5rem;
 }
 .landing-page.content .carousel .landing-page.joke {
-  justify-content: left;
+  text-align: left;
+  max-width: 80.1rem;
+}
+.landing-page.content .carousel .landing-page.joke .joke-setup,
+.landing-page.content .carousel .landing-page.joke .joke-delivery {
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: normal;
+  letter-spacing: 0.171rem;
+  font-size: 4.8rem;
 }
 .landing-page.content .carousel .landing-page.joke .joke-setup {
   color: #cbcbcb;
-  font-size: 4.8rem;
 }
 .landing-page.content .carousel .landing-page.joke .joke-delivery {
   color: #e5872f;
-  font-size: 4.8rem;
 }
 .landing-page.content .landing-page.container {
   display: flex;
@@ -79,6 +87,7 @@
   padding-top: 5rem;
   justify-content: center;
   margin: 0 auto;
+  max-width: 81.8rem;
 }
 .landing-page.content .landing-page.container .landing-page.tagline {
   font-size: 3.6rem;
