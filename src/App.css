@@ -4,6 +4,7 @@
   width: 100%;
   position: relative;
   min-height: 100vh;
+  padding-bottom: 5rem;
 }
 .landing-page-header {
   position: absolute;
@@ -47,23 +48,43 @@
 }
 .landing-page.content .carousel .left-button,
 .landing-page.content .carousel .right-button {
-  font-size: 4.8rem;
   cursor: pointer;
   position: absolute;
   color: "#cbcbcb";
   justify-content: center;
 }
+@media (max-width:550px) {
+  .landing-page.content .carousel .left-button,
+  .landing-page.content .carousel .right-button {
+    height: 3.4rem;
+  }
+}
 .landing-page.content .carousel .left-button {
   padding-right: 2rem;
   left: 5rem;
+}
+@media (max-width:550px) {
+  .landing-page.content .carousel .left-button {
+    left: 2rem;
+  }
 }
 .landing-page.content .carousel .right-button {
   padding-left: 2rem;
   right: 5rem;
 }
+@media (max-width:550px) {
+  .landing-page.content .carousel .right-button {
+    right: 2rem;
+  }
+}
 .landing-page.content .carousel .landing-page.joke {
-  text-align: left;
   max-width: 80.1rem;
+  margin: 0 auto;
+}
+@media (max-width:550px) {
+  .landing-page.content .carousel .landing-page.joke {
+    max-width: 75%;
+  }
 }
 .landing-page.content .carousel .landing-page.joke .joke-setup,
 .landing-page.content .carousel .landing-page.joke .joke-delivery {
@@ -73,6 +94,12 @@
   line-height: normal;
   letter-spacing: 0.171rem;
   font-size: 4.8rem;
+}
+@media (max-width:550px) {
+  .landing-page.content .carousel .landing-page.joke .joke-setup,
+  .landing-page.content .carousel .landing-page.joke .joke-delivery {
+    font-size: 3.8rem;
+  }
 }
 .landing-page.content .carousel .landing-page.joke .joke-setup {
   color: #cbcbcb;
