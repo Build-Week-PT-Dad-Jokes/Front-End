@@ -10,8 +10,10 @@ import useMediaQuery from '@material-ui/core/useMediaQuery';
 import axiosWithAuth from "../utils/axiosWithAuth"
 import Switch from '@material-ui/core/Switch';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
+import { connect } from 'react-redux';
+import { loginUser, setJokes } from '../actions';
 
-function AddJokeModal() {
+function AddJokeModal(props) {
   const [checkedPrivate, setCheckedPrivate]=useState(false)
   const [open, setOpen] = useState(false);
   const [newJoke, setNewJoke]=useState({
@@ -47,6 +49,8 @@ function AddJokeModal() {
     axiosWithAuth()
       .post("/jokes", newJoke)
         .then(response => {
+          props.loginUser();
+          props.setJokes();
           handleClose()
         })
         .catch(err => {
@@ -131,4 +135,4 @@ function AddJokeModal() {
   );
 }
 
-export default AddJokeModal
+export default connect(null, { loginUser, setJokes })(AddJokeModal)
