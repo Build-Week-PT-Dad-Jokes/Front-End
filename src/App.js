@@ -18,7 +18,7 @@ import MyJokes from './components/MyJokes';
 function App(props) {
   const { token, loginUser, setJokes } = props;
   useEffect(() => {
-        loginUser();
+        !!token && loginUser();
         // eslint-disable-next-line
   }, [token])
 
