@@ -295,6 +295,7 @@ span {
 }
 .home-container {
   background-color: #848484;
+  min-height: 100vh;
 }
 .home-container .jokes-container {
   padding-top: 10px;
