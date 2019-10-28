@@ -1,7 +1,8 @@
-import axiosWithAuth from '../utils/axiosWithAuth';
+import axiosWithAuth from "../utils/axiosWithAuth";
 
 export const SET_TOKEN = "SET_TOKEN";
 export const LOGIN_USER = "LOGIN_USER";
+export const SIGN_OUT = "SIGN_OUT";
 
 export const SET_JOKES = "SET_JOKES";
 export const SEARCH_RESPONSE = "SEARCH_RESPONSE";
@@ -12,14 +13,9 @@ export const SET_IS_SEARCHING = "SET_IS_SEARCHING";
 export const setUserWithCreds = creds => {
   localStorage.setItem("token", creds.token);
   localStorage.setItem("userID", creds.user.id);
-  loginUser()
+  loginUser();
   return { type: SET_TOKEN, payload: creds.token };
 };
-
-// export const loginUser = user => {
-//   console.log(user)
-//   return { type: LOGIN_USER, payload: user };
-// };
 
 export const loginUser = () => dispatch => {
   axiosWithAuth()
@@ -30,12 +26,23 @@ export const loginUser = () => dispatch => {
     .catch(err => console.error(err.response));
 };
 
+export const signOut = () => {
+  localStorage.removeItem("token");
+  localStorage.removeItem("userID");
+  return {type: SIGN_OUT}
+}
+
 // Jokes Actions
 
-export const setJokes = jokes => ({
-  type: SET_JOKES,
-  payload: jokes
-});
+export const setJokes = () => dispatch => {
+  axiosWithAuth()
+    .get("/jokes")
+    .then(resp => {
+      const filteredPublic = resp.data.filter(ele => !ele.private);
+      dispatch({ type: SET_JOKES, payload: filteredPublic });
+    })
+    .catch(err => console.log(err));
+};
 
 export const setSearchResponse = response => ({
   type: SEARCH_RESPONSE,

@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import {Route, Redirect, Switch} from "react-router";
 import { connect } from 'react-redux';
 import PrivateRoute from './utils/PrivateRoute';
-import { loginUser } from './actions';
+import { loginUser, setJokes } from './actions';
 import "./App.css";
 
 //component import
@@ -16,11 +16,15 @@ import FavoritesPage from "./components/FavoritesPage"
 import MyJokes from './components/MyJokes';
 
 function App(props) {
-  const { token, loginUser } = props;
+  const { token, loginUser, setJokes } = props;
   useEffect(() => {
         loginUser();
         // eslint-disable-next-line
   }, [token])
+
+  useEffect(()=>{
+    setJokes()
+}, [props.match, setJokes])
 
   return (
     <div className="App">
@@ -55,4 +59,4 @@ const mapStateToProps = state => ({
   token: state.userReducer.token,
 })
 
-export default connect(mapStateToProps, {loginUser})(App);
+export default connect(mapStateToProps, {loginUser, setJokes})(App);

@@ -1,24 +1,12 @@
-import React, {useState, useEffect} from "react"
+import React, {useState} from "react"
 import Joke from "./Joke"
-import axios from "axios"
 import JokeOfDay from "./JokeOfDay"
 import AddJokeModal from "./AddJokeModal"
 import { connect } from 'react-redux';
-import { setJokes } from '../actions';
 
 const JokesList = props => {
     const [sortBy, setSortBy] = useState('default')
-    const { apiJokes, isSearching, setJokes, searchResponse } = props;
-    useEffect(()=>{
-        axios 
-            .get('https://dadjokesbw.herokuapp.com/api/jokes')
-            .then(resp => {
-                const filteredPublic = resp.data.filter(ele=> !ele.private)
-                setJokes(filteredPublic)
-            })
-            .catch(err=> console.log(err))
-            // eslint-disable-next-line
-    }, [])
+    const { apiJokes, isSearching, searchResponse } = props;
 
     const getPageTitle = ()=> {
         if(sortBy==='mostPopular'){
@@ -56,7 +44,8 @@ const JokesList = props => {
             })
         }
         if(sortBy==='topRated'){
-            return !!apiJokes && apiJokes.sort((a,b)=> b.rating - a.rating).map((joke,ind)=>{
+            let topRated = [...apiJokes];
+            return !!apiJokes && topRated.sort((a,b)=> b.rating - a.rating).map((joke,ind)=>{
                 return returnJoke(joke, ind)
             })
         }
@@ -103,4 +92,4 @@ const mapStateToProps = ({ jokesReducer: {jokes, isSearching, searchResponse }})
     searchResponse
 })
 
-export default connect(mapStateToProps, { setJokes })(JokesList)
+export default connect(mapStateToProps, {})(JokesList)

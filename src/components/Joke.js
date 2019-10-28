@@ -15,7 +15,7 @@ import { loginUser } from '../actions';
 
 const Joke = props => {
   // eslint-disable-next-line
-  const { joke, match, inheritBookmark = false, token, loginUser } = props;
+  const { joke, match, inheritBookmark = false, loginUser } = props;
   const [isBookmarked, setIsBookmarked] = useState(inheritBookmark);
   const [isSharing, setIsSharing] = useState(false);
   const [favoriteId, setFavoriteId] = useState();
@@ -40,6 +40,7 @@ const Joke = props => {
         .post(`/favorite-joke/${joke.id}`)
         .then(response => {
           setFavoriteId(response.data.favoritedJoke.id);
+          loginUser();
         })
         .catch(err => {
           console.log(err);
