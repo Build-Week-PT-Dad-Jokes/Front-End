@@ -7,6 +7,7 @@ export const SIGN_OUT = "SIGN_OUT";
 export const SET_JOKES = "SET_JOKES";
 export const SEARCH_RESPONSE = "SEARCH_RESPONSE";
 export const SET_IS_SEARCHING = "SET_IS_SEARCHING";
+export const LOADING_JOKES = "LOADING_JOKES";
 
 // User Actions
 
@@ -29,12 +30,13 @@ export const loginUser = () => dispatch => {
 export const signOut = () => {
   localStorage.removeItem("token");
   localStorage.removeItem("userID");
-  return {type: SIGN_OUT}
-}
+  return { type: SIGN_OUT };
+};
 
 // Jokes Actions
 
 export const setJokes = () => dispatch => {
+  dispatch({ type: LOADING_JOKES });
   axiosWithAuth()
     .get("/jokes")
     .then(resp => {
