@@ -40,9 +40,10 @@ const JokesList = props => {
       );
     }
     if (sortBy === "mostRecent" || sortBy === "default") {
+      let recent = [...apiJokes].sort((a, b) => b.id - a.id);
       return (
         !!apiJokes &&
-        apiJokes.map((joke, ind) => {
+        recent.map((joke, ind) => {
           return returnJoke(joke, ind);
         })
       );
@@ -88,7 +89,7 @@ const JokesList = props => {
               <option value="topRated">Top Rated</option>
             </select>
           </div>
-          {!isSearching && getJokeContent()}
+          {!!apiJokes && !isSearching && getJokeContent()}
           <PulseLoader loading={loadingJokes} />
         </>
       ) : (
