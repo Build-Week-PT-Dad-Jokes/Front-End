@@ -6,7 +6,7 @@ const initialState = {
     id: localStorage.getItem("userID"),
     username: "",
     email: "",
-    jokes: null,
+    jokes: [],
     date_created: "",
     favorites: null,
   }

@@ -5,36 +5,38 @@ import { makeStyles } from "@material-ui/core/styles";
 import leftArrow from "../assests/left.svg";
 import rightArrow from "../assests/right.svg";
 
-const buttonStyles = () => ({
-  margin: "2rem",
-  fontSize: "2.4rem",
-  borderRadius: "0.2rem",
-  padding: "1rem",
-  letterSpacing: "0.086rem"
-});
+const useStyles = makeStyles(theme => {
+  const buttonStyles = {
+    margin: "2rem",
+    fontSize: "2.4rem",
+    borderRadius: "0.2rem",
+    padding: "1rem",
+    letterSpacing: "0.086rem"
+  };
 
-const useStyles = makeStyles(theme => ({
-  button1: {
-    ...buttonStyles(),
-    backgroundColor: "#c92b2b",
-    color: "#cbcbcb"
-  },
-  button2: {
-    ...buttonStyles(theme),
-    backgroundColor: "#e5872f",
-    color: "#1e1e1e"
-  },
-  loginLink: {
-    fontSize: "2.4rem",
-    letterSpacing: "0.086rem",
-    color: "#e5872f"
-  },
-  loginLabel: {
-    fontSize: "2.4rem",
-    letterSpacing: "0.086rem",
-    color: "#cbcbcb"
-  }
-}));
+  return {
+    button1: {
+      ...buttonStyles,
+      backgroundColor: "#c92b2b",
+      color: "#cbcbcb"
+    },
+    button2: {
+      ...buttonStyles,
+      backgroundColor: "#e5872f",
+      color: "#1e1e1e"
+    },
+    loginLink: {
+      fontSize: "2.4rem",
+      letterSpacing: "0.086rem",
+      color: "#e5872f"
+    },
+    loginLabel: {
+      fontSize: "2.4rem",
+      letterSpacing: "0.086rem",
+      color: "#cbcbcb"
+    }
+  };
+});
 
 const LandingPage = props => {
   const classes = useStyles();
