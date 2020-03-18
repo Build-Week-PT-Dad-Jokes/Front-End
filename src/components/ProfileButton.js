@@ -1,9 +1,9 @@
-import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import Popover from '@material-ui/core/Popover';
-import Typography from '@material-ui/core/Typography';
-import user from '../img/user.png';
-import {Link} from "react-router-dom";
+import React from "react";
+import { makeStyles } from "@material-ui/core/styles";
+import Popover from "@material-ui/core/Popover";
+import Typography from "@material-ui/core/Typography";
+import user from "../img/user.png";
+import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { signOut } from "../actions";
 
@@ -15,14 +15,14 @@ const useStyles = makeStyles(theme => ({
     fontWeight: "bold"
   },
   link: {
-    textDecoration: 'none',
-    color: 'black',
+    textDecoration: "none",
+    color: "black",
     fontFamily: "Roboto",
     cursor: "pointer"
   }
 }));
 
- function ProfileButton(props) {
+function ProfileButton(props) {
   const classes = useStyles();
   const [anchorEl, setAnchorEl] = React.useState(null);
 
@@ -35,17 +35,17 @@ const useStyles = makeStyles(theme => ({
   };
 
   const open = Boolean(anchorEl);
-  const id = open ? 'simple-popover' : undefined;
+  const id = open ? "simple-popover" : undefined;
 
   const logout = () => {
     props.signOut();
-    alert('You have been signed out')
-  }
+    alert("You have been signed out");
+  };
 
   return (
     <div>
-      <div className ="profile-logo" aria-describedby={id} onClick={handleClick}>
-        <img src={user} alt="user-profile-logo"/>
+      <div className="profile-logo" aria-describedby={id} onClick={handleClick}>
+        <img src={user} alt="user-profile-logo" />
       </div>
       <Popover
         id={id}
@@ -53,15 +53,17 @@ const useStyles = makeStyles(theme => ({
         anchorEl={anchorEl}
         onClose={handleClose}
         anchorOrigin={{
-          vertical: 'bottom',
-          horizontal: 'center',
+          vertical: "bottom",
+          horizontal: "center"
         }}
         transformOrigin={{
-          vertical: 'top',
-          horizontal: 'center',
+          vertical: "top",
+          horizontal: "center"
         }}
       >
         <Typography className={classes.typography}>
+          {!!props.loggedIn ? (
+            <>
               <Link className={classes.link} to="/myjokes">
                 <p>My Jokes</p>
               </Link>
@@ -71,10 +73,24 @@ const useStyles = makeStyles(theme => ({
               <p className={classes.link} onClick={logout}>
                 Sign Out
               </p>
-          </Typography>
+            </>
+          ) : (
+            <>
+              <Link className={classes.link} to="/login">
+                <p>Login</p>
+              </Link>
+              <Link className={classes.link} to="/signup">
+                <p>Sign Up</p>
+              </Link>
+            </>
+          )}
+        </Typography>
       </Popover>
     </div>
   );
 }
 
-export default connect(null, { signOut })(ProfileButton)
+export default connect(
+  state => ({ loggedIn: state.userReducer.user.username }),
+  { signOut }
+)(ProfileButton);
