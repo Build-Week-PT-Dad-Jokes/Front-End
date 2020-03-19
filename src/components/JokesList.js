@@ -1,14 +1,19 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Joke from "./Joke";
 import JokeOfDay from "./JokeOfDay";
 import AddJokeModal from "./AddJokeModal";
 import { connect } from "react-redux";
 
 import PulseLoader from "react-spinners/PulseLoader";
+import { setJokes } from "../actions";
 
 const JokesList = props => {
   const [sortBy, setSortBy] = useState("default");
-  const { apiJokes, isSearching, searchResponse, loadingJokes } = props;
+  const { apiJokes, isSearching, searchResponse, loadingJokes, setJokes } = props;
+
+  useEffect(() => {
+    setJokes();
+  }, [setJokes]);
 
   const getPageTitle = () => {
     if (sortBy === "mostPopular") {
@@ -25,7 +30,7 @@ const JokesList = props => {
     return (
       ind < 10 && (
         <div className="single-joke" key={joke.id}>
-          <Joke {...props} joke={joke} />
+          <Joke {...props} joke={joke} inheritBookmark={joke.favorite}/>
         </div>
       )
     );
@@ -112,4 +117,4 @@ const mapStateToProps = ({
   loadingJokes
 });
 
-export default connect(mapStateToProps, {})(JokesList);
+export default connect(mapStateToProps, { setJokes })(JokesList);

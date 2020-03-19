@@ -8,7 +8,7 @@ const initialState = {
     email: "",
     jokes: [],
     date_created: "",
-    favorites: null,
+    favorites: [],
   }
 };
 

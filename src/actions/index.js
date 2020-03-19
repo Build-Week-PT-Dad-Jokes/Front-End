@@ -35,13 +35,29 @@ export const signOut = () => {
 
 // Jokes Actions
 
-export const setJokes = () => dispatch => {
+export const setJokes = () => (dispatch, getState) => {
   dispatch({ type: LOADING_JOKES });
   axiosWithAuth()
     .get("/jokes")
     .then(resp => {
       const filteredPublic = resp.data.filter(ele => !ele.private);
-      dispatch({ type: SET_JOKES, payload: filteredPublic });
+      const state = getState();
+      const favorites = state.userReducer.user.favorites;
+      const favoriteIds = [];
+      if (favorites.length) {
+        favorites.forEach(fav => {
+          favoriteIds.push(fav.joke_id);
+        });
+      }
+      const jokes = filteredPublic.map(joke => {
+        delete joke.private;
+        joke.favorite = false;
+        favoriteIds.forEach(favId => {
+          if (favId === joke.id) joke.favorite = true;
+        });
+        return { ...joke };
+      });
+      dispatch({ type: SET_JOKES, payload: jokes });
     })
     .catch(err => console.log(err));
 };
