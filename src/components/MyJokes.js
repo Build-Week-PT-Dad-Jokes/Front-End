@@ -7,15 +7,20 @@ import BackButton from "./BackButton";
 import { Box } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 
-  const useStyles = makeStyles(theme => {
-    return {
-      jokesPlaceholder: {
-        marginTop: "1rem",
-        padding: "1rem",
-        backgroundColor: "#cbcbcb",
-      }
+const useStyles = makeStyles(theme => {
+  return {
+    jokesPlaceholder: {
+      marginTop: "2rem",
+      padding: "1rem",
+      backgroundColor: "#cbcbcb"
+    },
+    buttonsContainer: {
+      display: "flex",
+      justifyContent: "space-between",
+      marginBottom: "3rem"
     }
-  })
+  };
+});
 
 const MyJokes = props => {
   const { myJokes } = props;
@@ -34,17 +39,19 @@ const MyJokes = props => {
   return (
     <div className="home-container">
       <Header />
-      <BackButton {...props} style={{ justifySelf: "left" }} />
       <div className="jokes-container">
-        <AddJokeModal />
+        <Box className={classes.buttonsContainer}>
+          <BackButton {...props} style={{ justifySelf: "left" }} />
+          <AddJokeModal />
+        </Box>
         <h2>My Jokes</h2>
-          {myJokes.length ? (
-            myJokes.map((joke, ind) => returnJoke(joke, ind))
-          ) : (
-            <Box className={classes.jokesPlaceholder}>
-              <p>You have not added any jokes! Where you at Dad?</p>
-            </Box>
-          )}
+        {myJokes.length ? (
+          myJokes.map((joke, ind) => returnJoke(joke, ind))
+        ) : (
+          <Box className={classes.jokesPlaceholder}>
+            <p>You have not added any jokes! Where you at Dad?</p>
+          </Box>
+        )}
       </div>
     </div>
   );
