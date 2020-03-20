@@ -7,10 +7,6 @@ const Home = props => {
         <div className="home-container">
             <Header />
             <JokesList {...props} />
-            {/* <Link to="/favorites/7">
-                Go to favorites
-            </Link> */}
-            {/* <FavoritesPage/> */}
         </div>
     )
 }

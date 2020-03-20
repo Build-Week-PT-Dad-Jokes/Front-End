@@ -11,7 +11,7 @@ const JokeOfDay = props => {
 
     return(
         <div className="single-joke">
-            {randomJoke && <Joke {...props} joke={randomJoke} />}
+            {randomJoke && <Joke {...props} joke={randomJoke} inherietBookmark={randomJoke.favorite} />}
         </div>
     )
 }
